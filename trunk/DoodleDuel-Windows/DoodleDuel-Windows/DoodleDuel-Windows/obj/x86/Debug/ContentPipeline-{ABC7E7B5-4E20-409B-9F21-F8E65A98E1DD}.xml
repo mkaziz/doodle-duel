@@ -7,19 +7,12 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\chicken.xnb</Output>
-      <Time>2012-04-29T18:33:42.904888-05:00</Time>
+      <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\chicken.xnb</Output>
+      <Time>2012-05-06T14:12:28.3879204-05:00</Time>
       <Dependency>
-        <Key>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\chicken_0.xml</Key>
-        <Value>2012-04-29T18:34:45.3854617-05:00</Value>
+        <Key>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\chicken_0.xml</Key>
+        <Value>2012-05-06T14:15:06.4599616-05:00</Value>
       </Dependency>
-    </Item>
-    <Item>
-      <Source>chicken.x</Source>
-      <Importer>XImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\chicken_0.xml</Output>
-      <Time>2012-04-29T18:33:42.904888-05:00</Time>
     </Item>
     <Item>
       <Source>p1_wedge.fbx</Source>
@@ -27,19 +20,12 @@
       <Importer>FbxImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\p1_wedge.xnb</Output>
+      <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\p1_wedge.xnb</Output>
       <Time>0001-01-01T00:00:00</Time>
       <Dependency>
-        <Key>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\p1_wedge_0.xml</Key>
-        <Value>2012-04-29T18:37:08.02262-05:00</Value>
+        <Key>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\p1_wedge_0.xml</Key>
+        <Value>2012-05-06T14:15:08.8400978-05:00</Value>
       </Dependency>
-    </Item>
-    <Item>
-      <Source>p1_wedge.fbx</Source>
-      <Importer>FbxImporter</Importer>
-      <Options>IntermediateFile, DontCacheImportedData</Options>
-      <Output>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\p1_wedge_0.xml</Output>
-      <Time>2012-04-29T18:36:37.985902-05:00</Time>
     </Item>
     <Item>
       <Source>wedge_p1_diff_v1.tga</Source>
@@ -47,8 +33,22 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\wedge_p1_diff_v1.xnb</Output>
+      <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\wedge_p1_diff_v1.xnb</Output>
       <Time>0001-01-01T00:00:00</Time>
+    </Item>
+    <Item>
+      <Source>chicken.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\chicken_0.xml</Output>
+      <Time>2012-05-06T14:12:28.3879204-05:00</Time>
+    </Item>
+    <Item>
+      <Source>p1_wedge.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\p1_wedge_0.xml</Output>
+      <Time>2012-05-06T14:12:27.0158419-05:00</Time>
     </Item>
     <BuildSuccessful>false</BuildSuccessful>
     <Settings>
@@ -57,10 +57,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-WindowsContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-WindowsContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -89,7 +89,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-03-26T18:57:42.4554984-05:00</Value>
+        <Value>2012-03-28T21:32:20.2564526-05:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

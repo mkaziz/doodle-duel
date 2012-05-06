@@ -52,8 +52,8 @@ namespace DoodleDuel_Windows
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            myModel = Content.Load<Model>("p1_wedge");
-            aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
+            //myModel = Content.Load<Model>("chicken");
+            //aspectRatio = graphics.GraphicsDevice.Viewport.AspectRatio;
 
             // TODO: use this.Content to load your game content here
         }
@@ -96,7 +96,7 @@ namespace DoodleDuel_Windows
 
         protected override void Draw(GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+            graphics.GraphicsDevice.Clear(Color.Green);
 
             // Copy any parent transforms.
             Matrix[] transforms = new Matrix[myModel.Bones.Count];
