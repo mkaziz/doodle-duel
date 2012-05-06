@@ -50,6 +50,15 @@
       <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\p1_wedge_0.xml</Output>
       <Time>2012-05-06T14:12:27.0158419-05:00</Time>
     </Item>
+    <Item>
+      <Source>untitled.fbx</Source>
+      <Name>untitled</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\untitled.xnb</Output>
+      <Time>0001-01-01T00:00:00</Time>
+    </Item>
     <BuildSuccessful>false</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{ABC7E7B5-4E20-409B-9F21-F8E65A98E1DD}</ContentProjectGUID>

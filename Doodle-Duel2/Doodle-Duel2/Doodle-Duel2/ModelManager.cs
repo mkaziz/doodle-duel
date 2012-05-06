@@ -43,9 +43,9 @@ namespace Doodle_Duel2
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            foreach (BasicModel model in models) 
+            foreach (BasicModel model in models)
             {
-                model.Draw(((Game1)Game).camera);
+                model.Update();
             }
 
             base.Update(gameTime);
@@ -55,7 +55,7 @@ namespace Doodle_Duel2
         {
             foreach (BasicModel model in models)
             {
-                model.Update();
+                model.Draw(((Game1)Game).camera);
             }
 
             base.Draw(gameTime);
