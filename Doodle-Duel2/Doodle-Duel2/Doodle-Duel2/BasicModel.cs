@@ -13,36 +13,48 @@ using Microsoft.Xna.Framework.Media;
 namespace Doodle_Duel2
 {
     /// <summary>
-    /// This is a game component that implements IUpdateable.
+    /// Implements a class that can be subclassed to create models easily
     /// </summary>
-    public class BasicModel : Microsoft.Xna.Framework.GameComponent
+    public class BasicModel
     {
-        public BasicModel(Game game)
-            : base(game)
+
+        public Model model { get; protected set; }
+        protected Matrix world = Matrix.Identity;
+
+        public BasicModel(Model m)
         {
-            // TODO: Construct any child components here
+            model = m;
         }
 
-        /// <summary>
-        /// Allows the game component to perform any initialization it needs to before starting
-        /// to run.  This is where it can query for any required services and load content.
-        /// </summary>
-        public override void Initialize()
+        public virtual void Update()
         {
-            // TODO: Add your initialization code here
-
-            base.Initialize();
         }
 
-        /// <summary>
-        /// Allows the game component to update itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
-        public override void Update(GameTime gameTime)
+        public virtual Matrix getWorld()
         {
-            // TODO: Add your update code here
-
-            base.Update(gameTime);
+            return world;
         }
+
+        public void Draw(Camera camera)
+        {
+            Matrix[] transforms = new Matrix[model.Bones.Count];
+            model.CopyAbsoluteBoneTransformsTo(transforms);
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect be in mesh.Effects)
+                {
+                    be.EnableDefaultLighting();
+                    be.Projection = camera.projection;
+                    be.View = camera.view;
+                    be.World = getWorld() * mesh.ParentBone.Transform;
+                }
+
+                mesh.Draw();
+            }
+
+
+        }
+
     }
 }
