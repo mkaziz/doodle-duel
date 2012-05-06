@@ -18,7 +18,9 @@ namespace Doodle_Duel2
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Camera camera;
+        ModelManager modelManager;
+        
+        public Camera camera;
 
         public Game1()
         {
@@ -38,8 +40,10 @@ namespace Doodle_Duel2
 
             // Initialize Camera
             camera = new Camera(this, new Vector3(0, 0, 5), Vector3.Zero, Vector3.Up);
-            
 
+            // Initialize the modelmanager
+            modelManager = new ModelManager(this);
+            Components.Add(modelManager);
 
             base.Initialize();
         }
