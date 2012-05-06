@@ -39,7 +39,7 @@ namespace Doodle_Duel2
             // TODO: Add your initialization logic here
 
             // Initialize Camera
-            camera = new Camera(this, new Vector3(0, 0, 5), Vector3.Zero, Vector3.Up);
+            camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);
 
             // Initialize the modelmanager
             modelManager = new ModelManager(this);
@@ -91,7 +91,7 @@ namespace Doodle_Duel2
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Green);
 
             // TODO: Add your drawing code here
 
