@@ -16,10 +16,19 @@ namespace Doodle_Duel2
     {
 
         List<BasicModel> models = new List<BasicModel>();
+        private bool hidden; 
+
+        public bool hideChar
+        {
+            get{ return hidden;}
+            set { hidden = value; }
+
+        }
 
         public ModelManager(Game game)
             : base(game)
         {
+            hidden = false; 
             // TODO: Construct any child components here
         }
 
@@ -42,9 +51,12 @@ namespace Doodle_Duel2
 
         public override void Draw(GameTime gameTime)
         {
-            foreach (BasicModel model in models)
+            if (hidden == false)
             {
-                model.Draw(((Game1)Game).camera);
+                foreach (BasicModel model in models)
+                {
+                    model.Draw(((Game1)Game).camera);
+                }
             }
 
             base.Draw(gameTime);
@@ -52,7 +64,7 @@ namespace Doodle_Duel2
 
         protected override void LoadContent()
         {
-            models.Add(new BasicModel(Game.Content.Load<Model>(@"chicken"), 3.184f / 2, new Vector3(0, -15, 0)));
+            models.Add(new BasicModel(Game.Content.Load<Model>(@"chicken"), 3.184f / 2, new Vector3(0, -15, 0),.5f));
             base.LoadContent();
         }
 
