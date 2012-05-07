@@ -51,6 +51,8 @@ namespace Doodle_Duel2
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
+
+            // Add the scrolling background
             modelManager = new ModelManager(g);
             g.Components.Add(modelManager);
             game = g;
@@ -103,7 +105,6 @@ namespace Doodle_Duel2
                                                        bool coveredByOtherScreen)
         {
             base.Update(gameTime, otherScreenHasFocus, false);
-
             // Gradually fade in or out depending on whether we are covered by the pause screen.
             if (coveredByOtherScreen)
                 pauseAlpha = Math.Min(pauseAlpha + 1f / 32, 1);
@@ -180,8 +181,6 @@ namespace Doodle_Duel2
             // This game has a blue background. Why? Because!
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
                                                Color.CornflowerBlue, 0, 0);
-
-            // Our player and enemy are both actually just text strings.
 
             // If the game is transitioning on or off, fade it out to black.
             if (TransitionPosition > 0 || pauseAlpha > 0)
