@@ -44,6 +44,9 @@ namespace Doodle_Duel2
             // Initialize the modelmanager
             modelManager = new ModelManager(this);
             Components.Add(modelManager);
+            
+            // Add the scrolling background
+            Components.Add(new Background(this));
 
             base.Initialize();
         }
@@ -56,7 +59,7 @@ namespace Doodle_Duel2
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+           
             // TODO: use this.Content to load your game content here
         }
 
