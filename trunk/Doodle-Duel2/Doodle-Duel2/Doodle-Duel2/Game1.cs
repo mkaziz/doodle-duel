@@ -30,7 +30,7 @@ namespace Doodle_Duel2
             // TODO: Add your initialization logic here
             
             // Add the scrolling background
-            Components.Add(new Background(this));
+            //Components.Add(new Background(this));
 
             // Initialize Camera
             camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);

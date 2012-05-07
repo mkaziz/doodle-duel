@@ -52,7 +52,7 @@ namespace Doodle_Duel2
 
         protected override void LoadContent()
         {
-            models.Add(new BasicModel(Game.Content.Load<Model>(@"chicken")));
+            models.Add(new BasicModel(Game.Content.Load<Model>(@"chicken"), 3.184f / 2, new Vector3(0, -15, 0)));
             base.LoadContent();
         }
 
