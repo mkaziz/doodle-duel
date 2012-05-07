@@ -16,11 +16,13 @@ namespace Doodle_Duel2
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         ModelManager modelManager;
+        Background background;
         
         public Camera camera;
 
         public Game1()
         {
+            base.IsFixedTimeStep = false;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
         }
@@ -30,7 +32,7 @@ namespace Doodle_Duel2
             // TODO: Add your initialization logic here
             
             // Add the scrolling background
-            //Components.Add(new Background(this));
+            background = new Background(this);
 
             // Initialize Camera
             camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);
@@ -57,6 +59,7 @@ namespace Doodle_Duel2
 
         protected override void Update(GameTime gameTime)
         {
+            background.Update(gameTime);
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -74,6 +77,9 @@ namespace Doodle_Duel2
             GraphicsDevice.Clear(Color.Green);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+                background.Draw(gameTime, spriteBatch);
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
