@@ -27,12 +27,6 @@ namespace Doodle_Duel2
             
         }
 
-<<<<<<< .mine
-=======
-        public override void Initialize()
-        {
-            // TODO: Add your initialization code here
->>>>>>> .r16
 
         public void Update(GameTime gameTime)
         {
@@ -50,11 +44,7 @@ namespace Doodle_Duel2
             
             sd.Draw(texture, position, Color.White);
 
-<<<<<<< .mine
             if (position.Y >= 0 & position.Y <= screenSize.Y)
-=======
-            if (position.Y >= 0 && position.Y <= this.GraphicsDevice.Viewport.Height)
->>>>>>> .r16
                 sd.Draw(
                     texture,
                     new Vector2(position.X, position.Y - texture.Height),
@@ -62,19 +52,5 @@ namespace Doodle_Duel2
 
 
         }
-
-<<<<<<< .mine
-            
-
-=======
-        protected override void LoadContent()
-        {
-            background = Game.Content.Load<Texture2D>("background");
-            position = Vector2.Zero;
-            position.X = (this.GraphicsDevice.Viewport.Width - background.Width) / 2;
-            position.Y = this.GraphicsDevice.Viewport.Height - background.Height;
-            base.LoadContent();
-        }
->>>>>>> .r16
     }
 }
