@@ -64,6 +64,7 @@ namespace Doodle_Duel2
         {
             background = Game.Content.Load<Texture2D>("background");
             position = Vector2.Zero;
+            position.X = (this.GraphicsDevice.Viewport.Width - background.Width) / 2;
             position.Y = this.GraphicsDevice.Viewport.Height - background.Height;
             base.LoadContent();
         }

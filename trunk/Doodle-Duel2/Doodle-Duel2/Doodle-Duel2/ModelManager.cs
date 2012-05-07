@@ -12,9 +12,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    /// <summary>
-    /// Class to manange all the models in the game
-    /// </summary>
     public class ModelManager : Microsoft.Xna.Framework.DrawableGameComponent
     {
 
@@ -26,10 +23,6 @@ namespace Doodle_Duel2
             // TODO: Construct any child components here
         }
 
-        /// <summary>
-        /// Allows the game component to perform any initialization it needs to before starting
-        /// to run.  This is where it can query for any required services and load content.
-        /// </summary>
         public override void Initialize()
         {
             // TODO: Add your initialization code here
@@ -37,10 +30,6 @@ namespace Doodle_Duel2
             base.Initialize();
         }
 
-        /// <summary>
-        /// Allows the game component to update itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
             foreach (BasicModel model in models)
