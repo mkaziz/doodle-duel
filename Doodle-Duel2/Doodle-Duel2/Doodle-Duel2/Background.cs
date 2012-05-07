@@ -45,7 +45,7 @@ namespace Doodle_Duel2
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-            position.Y++;
+            position.Y += 5;
 
             if (position.Y >= this.GraphicsDevice.Viewport.Height)
                 position.Y = this.GraphicsDevice.Viewport.Height - background.Height;
