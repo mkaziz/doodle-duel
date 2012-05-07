@@ -21,15 +21,17 @@ namespace Doodle_Duel2
         private Vector3 modelPosition;
         private float initialHeight;
         private float jumpTime = 0; 
-        private float velocity = 15f;
-        private float gravity = 4.5f; 
+        private float velocity = 20f;
+        private float gravity = 4.5f;
+        private float modelScale; 
 
-        public BasicModel(Model m, float rotation, Vector3 position)
+        public BasicModel(Model m, float rotation, Vector3 position, float scale)
         {
             model = m;
             modelRotation = rotation;
             modelPosition = position;
             initialHeight = position.Y;
+            modelScale = scale; 
         }
 
         public virtual void Update()
@@ -50,6 +52,10 @@ namespace Doodle_Duel2
                 modelPosition += new Vector3(-.5f, 0, 0);
             else if (Keyboard.GetState().IsKeyDown(Keys.Left))
                 modelPosition += new Vector3(.5f, 0, 0);
+            else if (Keyboard.GetState().IsKeyDown(Keys.Up))
+                modelPosition += new Vector3(0, 0, .5f);
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down))
+                modelPosition += new Vector3(0, 0, -.5f);
 
         }
 
@@ -71,7 +77,7 @@ namespace Doodle_Duel2
                     be.Projection = camera.projection;
                     be.View = camera.view;
                     be.World = getWorld() * mesh.ParentBone.Transform;
-                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateTranslation(modelPosition); ;
+                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateTranslation(modelPosition) * Matrix.CreateScale(modelScale);
                 }
 
                 mesh.Draw();
