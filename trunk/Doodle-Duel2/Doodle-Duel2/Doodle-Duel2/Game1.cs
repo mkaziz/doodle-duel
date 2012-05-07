@@ -37,6 +37,9 @@ namespace Doodle_Duel2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            
+            // Add the scrolling background
+            Components.Add(new Background(this));
 
             // Initialize Camera
             camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);
@@ -44,9 +47,6 @@ namespace Doodle_Duel2
             // Initialize the modelmanager
             modelManager = new ModelManager(this);
             Components.Add(modelManager);
-            
-            // Add the scrolling background
-            Components.Add(new Background(this));
 
             base.Initialize();
         }
