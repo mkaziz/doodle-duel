@@ -12,9 +12,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    /// <summary>
-    /// Implements a class that can be subclassed to create models easily
-    /// </summary>
     public class BasicModel
     {
 
