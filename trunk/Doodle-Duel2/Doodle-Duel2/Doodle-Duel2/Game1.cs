@@ -14,9 +14,7 @@ namespace Doodle_Duel2
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        ModelManager modelManager;
-        Background background;
+        ScreenManager screenManager; 
         
         public Camera camera;
 
@@ -25,21 +23,27 @@ namespace Doodle_Duel2
             base.IsFixedTimeStep = false;
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = 853;
+            graphics.PreferredBackBufferHeight = 480;
+
+            // Create the screen manager component.
+            screenManager = new ScreenManager(this);
+
+            Components.Add(screenManager);
+
+            // Activate the first screens.
+            screenManager.AddScreen(new BackgroundScreen(), null);
+            screenManager.AddScreen(new MainMenuScreen(this), null);
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
             
-            // Add the scrolling background
-            background = new Background(this);
 
             // Initialize Camera
             camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);
-
-            // Initialize the modelmanager
-            modelManager = new ModelManager(this);
-            Components.Add(modelManager);
 
             base.Initialize();
         }
@@ -47,7 +51,6 @@ namespace Doodle_Duel2
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
            
             // TODO: use this.Content to load your game content here
         }
@@ -59,12 +62,7 @@ namespace Doodle_Duel2
 
         protected override void Update(GameTime gameTime)
         {
-            background.Update(gameTime);
             // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-                this.Exit();
 
 
             // TODO: Add your update logic here
@@ -77,9 +75,6 @@ namespace Doodle_Duel2
             GraphicsDevice.Clear(Color.Green);
 
             // TODO: Add your drawing code here
-            spriteBatch.Begin();
-                background.Draw(gameTime, spriteBatch);
-            spriteBatch.End();
 
             base.Draw(gameTime);
         }
