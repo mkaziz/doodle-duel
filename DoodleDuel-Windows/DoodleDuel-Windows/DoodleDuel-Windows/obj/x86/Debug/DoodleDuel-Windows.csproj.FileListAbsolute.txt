@@ -1,9 +1,0 @@
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\Content\chicken.xnb
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\DoodleDuel-Windows.exe
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\bin\x86\Debug\DoodleDuel-Windows.pdb
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\DoodleDuel-Windows.exe
-C:\Users\Public\Documents\School\2012 Spring\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\DoodleDuel-Windows.pdb
-C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\DoodleDuel-Windows.exe
-C:\Users\khalid\Desktop\doodle-duel\DoodleDuel-Windows\DoodleDuel-Windows\DoodleDuel-Windows\obj\x86\Debug\DoodleDuel-Windows.pdb
