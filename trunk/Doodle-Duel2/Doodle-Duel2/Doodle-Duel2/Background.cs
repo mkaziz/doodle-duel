@@ -12,54 +12,61 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    public class Background : Microsoft.Xna.Framework.DrawableGameComponent
+    public class Background
     {
 
-        Texture2D background;
-        Vector2 position;
+        Texture2D texture;
+        Vector2 position, screenSize;
 
-        public Background(Game game)
-            : base(game)
+        public Background(Game g)
         {
-            // TODO: Construct any child components here
+            screenSize = new Vector2(g.GraphicsDevice.Viewport.Width, g.GraphicsDevice.Viewport.Height);
+            texture = g.Content.Load<Texture2D>("background");
+            position = Vector2.Zero;
+            position.Y = screenSize.Y - texture.Height;
+            
         }
 
+<<<<<<< .mine
+=======
         public override void Initialize()
         {
             // TODO: Add your initialization code here
+>>>>>>> .r16
 
-            base.Initialize();
-        }
-
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-            position.Y += 5;
+            position.Y += 3;
 
-            if (position.Y >= this.GraphicsDevice.Viewport.Height)
-                position.Y = this.GraphicsDevice.Viewport.Height - background.Height;
+            if (position.Y >= screenSize.Y)
+                position.Y = position.Y - texture.Height;
 
-            base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
+        public void Draw(GameTime gameTime, SpriteBatch sd)
         {
-            SpriteBatch sd = new SpriteBatch(this.GraphicsDevice);
-            sd.Begin();
+            //this.Update(gameTime);
             
-            sd.Draw(background, position, Color.White);
+            sd.Draw(texture, position, Color.White);
 
+<<<<<<< .mine
+            if (position.Y >= 0 & position.Y <= screenSize.Y)
+=======
             if (position.Y >= 0 && position.Y <= this.GraphicsDevice.Viewport.Height)
+>>>>>>> .r16
                 sd.Draw(
-                    background,
-                    new Vector2(position.X, position.Y - background.Height),
+                    texture,
+                    new Vector2(position.X, position.Y - texture.Height),
                     Color.White);
 
-            sd.End();
 
-            base.Draw(gameTime);
         }
 
+<<<<<<< .mine
+            
+
+=======
         protected override void LoadContent()
         {
             background = Game.Content.Load<Texture2D>("background");
@@ -68,5 +75,6 @@ namespace Doodle_Duel2
             position.Y = this.GraphicsDevice.Viewport.Height - background.Height;
             base.LoadContent();
         }
+>>>>>>> .r16
     }
 }
