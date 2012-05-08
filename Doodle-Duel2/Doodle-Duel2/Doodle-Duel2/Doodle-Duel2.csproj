@@ -74,8 +74,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
-    <Compile Include="BasicModel.cs" />
+    <Compile Include="ModelTypes\BasicModel.cs" />
     <Compile Include="Background.cs" />
+    <Compile Include="ModelTypes\PlayerModel.cs" />
+    <Compile Include="ModelTypes\ShadowModel.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
     <Compile Include="ScreenManager\InputState.cs" />
     <Compile Include="ModelManager.cs" />
