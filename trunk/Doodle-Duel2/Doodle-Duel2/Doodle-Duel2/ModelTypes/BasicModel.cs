@@ -41,8 +41,10 @@ namespace Doodle_Duel2
             return world;
         }
 
+        
         public virtual void Draw(Camera camera)
         {
+            // copy-pasted code from some book I have - DO NOT MODIFY WITHOUT JUST CAUSE!
             Matrix[] transforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(transforms);
 
