@@ -89,7 +89,7 @@ namespace Doodle_Duel2
             //Must add a player and their shadow with matching string tags. 
             PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@"chicken"), 3.184f / 2, new Vector3(0, -15, 0),.5f, "playerone"); 
             playerModels.Add(player1);
-            shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"),player1));
+            shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
             base.LoadContent();
         }
 
