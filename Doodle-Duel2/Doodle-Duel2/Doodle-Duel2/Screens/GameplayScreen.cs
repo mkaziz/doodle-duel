@@ -178,6 +178,8 @@ namespace Doodle_Duel2
         /// </summary>
         public override void Draw(GameTime gameTime)
         {
+
+            
             // This game has a blue background. Why? Because!
             ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,
                                                Color.CornflowerBlue, 0, 0);
@@ -189,6 +191,8 @@ namespace Doodle_Duel2
 
                 ScreenManager.FadeBackBufferToBlack(alpha);
             }
+
+            ScreenManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }
 
 

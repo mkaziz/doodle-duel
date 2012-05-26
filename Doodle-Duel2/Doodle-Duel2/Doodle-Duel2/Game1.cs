@@ -40,7 +40,6 @@ namespace Doodle_Duel2
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            
 
             // Initialize Camera
             camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);
@@ -75,7 +74,7 @@ namespace Doodle_Duel2
             GraphicsDevice.Clear(Color.Green);
 
             // TODO: Add your drawing code here
-
+            //GraphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.Black, 1.0f, 0);
             base.Draw(gameTime);
         }
     }

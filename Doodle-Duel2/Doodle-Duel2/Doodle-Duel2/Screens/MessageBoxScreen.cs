@@ -162,6 +162,8 @@ namespace Doodle_Duel2
             spriteBatch.DrawString(font, message, textPosition, color);
 
             spriteBatch.End();
+
+            //ScreenManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }
 
 
