@@ -102,6 +102,8 @@ namespace Doodle_Duel2
                              new Color(TransitionAlpha, TransitionAlpha, TransitionAlpha));
 
             spriteBatch.End();
+
+            //ScreenManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }
 
 

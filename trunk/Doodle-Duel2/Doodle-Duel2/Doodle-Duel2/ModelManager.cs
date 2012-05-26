@@ -72,6 +72,11 @@ namespace Doodle_Duel2
         {
             if (hidden == false)
             {
+                foreach (PlatformModel model in platformModels)
+                {
+                    model.Draw(((Game1)Game).camera);
+                } 
+                
                 foreach (BasicModel model in models)
                 {
                     model.Draw(((Game1)Game).camera);
@@ -87,10 +92,7 @@ namespace Doodle_Duel2
                     model.Draw(((Game1)Game).camera);
                 }
 
-                foreach (PlatformModel model in platformModels)
-                {
-                    model.Draw(((Game1)Game).camera);
-                }
+
             }
 
             base.Draw(gameTime);
@@ -103,7 +105,7 @@ namespace Doodle_Duel2
             
             playerModels.Add(player1);
             shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -15, 0),.5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5 , 10), .5f));
             
             base.LoadContent();
         }
