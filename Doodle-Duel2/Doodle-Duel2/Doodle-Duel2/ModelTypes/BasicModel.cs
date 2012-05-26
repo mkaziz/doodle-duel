@@ -17,10 +17,10 @@ namespace Doodle_Duel2
 
         public Model model { get; protected set; }
         protected Matrix world = Matrix.Identity;
-        private float modelRotation;
-        private Vector3 modelPosition;
-        private float initialHeight;
-        private float modelScale; 
+        protected float modelRotation;
+        protected Vector3 modelPosition;
+        protected float initialHeight;
+        protected float modelScale; 
 
         public BasicModel(Model m, float rotation, Vector3 position, float scale)
         {
@@ -41,7 +41,7 @@ namespace Doodle_Duel2
             return world;
         }
 
-        public void Draw(Camera camera)
+        public virtual void Draw(Camera camera)
         {
             Matrix[] transforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(transforms);
@@ -54,7 +54,7 @@ namespace Doodle_Duel2
                     be.Projection = camera.projection;
                     be.View = camera.view;
                     be.World = getWorld() * mesh.ParentBone.Transform;
-                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateTranslation(modelPosition) * Matrix.CreateScale(modelScale);
+                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateScale(modelScale) * Matrix.CreateTranslation(modelPosition);
                 }
 
                 mesh.Draw();

@@ -12,16 +12,8 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    public class PlayerModel
+    public class PlayerModel : BasicModel
     {
-
-        public Model model { get; protected set; }
-        protected Matrix world = Matrix.Identity;
-
-        //Initial vars
-        private float modelRotation;
-        private Vector3 modelPosition;
-        private float modelScale;
         private string tag;
 
         public Vector3 Position 
@@ -34,22 +26,16 @@ namespace Doodle_Duel2
             get { return modelPosition.Y; }
         }
         //Vars for smooth jumping
-        private float initialHeight;
         private float jumpTime = 0;
         private float velocity = 20f;//Change around to make jumping higher/lower
         private float gravity = 4.5f; //Can change around to make jumping faster/slower
 
-        public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t)
+        public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t) : base(m, rotation, position, scale)
         {
-            model = m;
-            tag = t; 
-            modelRotation = rotation;
-            modelPosition = position;
-            initialHeight = position.Y;
-            modelScale = scale;
+            tag = t;
         }
 
-        public virtual void Update()
+        public override void Update()
         {
             if (jumpTime > velocity / gravity)
             {
@@ -74,33 +60,13 @@ namespace Doodle_Duel2
             else if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 modelPosition += new Vector3(0, 0, -.5f);
 
+            base.Update();
+
         }
 
-        public virtual Matrix getWorld()
+        public override void Draw(Camera camera)
         {
-            return world;
-        }
-
-        public void Draw(Camera camera)
-        {
-            Matrix[] transforms = new Matrix[model.Bones.Count];
-            model.CopyAbsoluteBoneTransformsTo(transforms);
-
-            foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect be in mesh.Effects)
-                {
-                    be.EnableDefaultLighting();
-                    be.Projection = camera.projection;
-                    be.View = camera.view;
-                    be.World = getWorld() * mesh.ParentBone.Transform;
-                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateScale(modelScale) * Matrix.CreateTranslation(modelPosition);
-                }
-
-                mesh.Draw();
-            }
-
-
+            base.Draw(camera);
         }
 
 
