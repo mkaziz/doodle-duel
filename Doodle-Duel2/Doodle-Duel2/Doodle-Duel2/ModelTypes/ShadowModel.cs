@@ -30,17 +30,15 @@ namespace Doodle_Duel2
             modelScale = .1f;
         }
 
-        public virtual void Update()
+        public override void Update()
         {
             modelPosition = linkedPlayer.Position; 
-            modelScale = 1/((linkedPlayer.CurrentHeight+linkedPlayer.Position.Y)*.3f); 
+            modelScale = 1/((linkedPlayer.CurrentHeight+linkedPlayer.Position.Y)*.3f);
+
+            base.Update();
 
         }
 
-        public virtual Matrix getWorld()
-        {
-            return world;
-        }
 
         public override void Draw(Camera camera)
         {

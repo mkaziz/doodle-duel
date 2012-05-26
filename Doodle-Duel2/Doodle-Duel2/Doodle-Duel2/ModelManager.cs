@@ -18,6 +18,7 @@ namespace Doodle_Duel2
         List<BasicModel> models = new List<BasicModel>();
         List<PlayerModel> playerModels = new List<PlayerModel>();
         List<ShadowModel> shadowModels = new List<ShadowModel>();
+        List<PlatformModel> platformModels = new List<PlatformModel>();
         private bool hidden; 
 
         public bool hideChar
@@ -59,6 +60,11 @@ namespace Doodle_Duel2
                 model.Update();
             }
 
+            foreach (PlatformModel model in platformModels)
+            {
+                model.Update();
+            }
+
             base.Update(gameTime);
         }
 
@@ -75,7 +81,13 @@ namespace Doodle_Duel2
                 {
                     model.Draw(((Game1)Game).camera);
                 }
+
                 foreach (ShadowModel model in shadowModels)
+                {
+                    model.Draw(((Game1)Game).camera);
+                }
+
+                foreach (PlatformModel model in platformModels)
                 {
                     model.Draw(((Game1)Game).camera);
                 }
@@ -88,8 +100,11 @@ namespace Doodle_Duel2
         {
             //Must add a player and their shadow with matching string tags. 
             PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@"chicken"), 3.184f / 2, new Vector3(0, -15, 0),.5f, "playerone"); 
+            
             playerModels.Add(player1);
             shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -15, 0),.5f));
+            
             base.LoadContent();
         }
 

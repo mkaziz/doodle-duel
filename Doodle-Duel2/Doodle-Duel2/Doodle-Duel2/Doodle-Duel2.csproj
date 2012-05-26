@@ -76,6 +76,7 @@
     <Compile Include="Camera.cs" />
     <Compile Include="ModelTypes\BasicModel.cs" />
     <Compile Include="Background.cs" />
+    <Compile Include="ModelTypes\PlatformModel.cs" />
     <Compile Include="ModelTypes\PlayerModel.cs" />
     <Compile Include="ModelTypes\ShadowModel.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
