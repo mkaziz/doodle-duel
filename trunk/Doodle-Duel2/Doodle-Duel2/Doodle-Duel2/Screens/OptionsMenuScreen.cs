@@ -22,26 +22,21 @@ namespace Doodle_Duel2
     {
         #region Fields
 
-        MenuEntry ungulateMenuEntry;
-        MenuEntry languageMenuEntry;
+        MenuEntry playerCountEntry;
         MenuEntry frobnicateMenuEntry;
         MenuEntry elfMenuEntry;
 
-        enum Ungulate
-        {
-            BactrianCamel,
-            Dromedary,
-            Llama,
-        }
-
-        static Ungulate currentUngulate = Ungulate.Dromedary;
-
-        static string[] languages = { "C#", "French", "Deoxyribonucleic acid" };
-        static int currentLanguage = 0;
+        static string[] playerCount = { "One Player", "Two Player"};
+        static int currentCount = 0;
 
         static bool frobnicate = true;
 
         static int elf = 23;
+
+        public string PlayerCount
+        {
+            get{ return playerCount[currentCount]; }
+        }
 
         #endregion
 
@@ -55,8 +50,7 @@ namespace Doodle_Duel2
             : base("Options")
         {
             // Create our menu entries.
-            ungulateMenuEntry = new MenuEntry(string.Empty);
-            languageMenuEntry = new MenuEntry(string.Empty);
+            playerCountEntry = new MenuEntry(string.Empty);
             frobnicateMenuEntry = new MenuEntry(string.Empty);
             elfMenuEntry = new MenuEntry(string.Empty);
 
@@ -65,15 +59,13 @@ namespace Doodle_Duel2
             MenuEntry back = new MenuEntry("Back");
 
             // Hook up menu event handlers.
-            ungulateMenuEntry.Selected += UngulateMenuEntrySelected;
-            languageMenuEntry.Selected += LanguageMenuEntrySelected;
+            playerCountEntry.Selected += PlayerCountEntrySelected;
             frobnicateMenuEntry.Selected += FrobnicateMenuEntrySelected;
             elfMenuEntry.Selected += ElfMenuEntrySelected;
             back.Selected += OnCancel;
             
-            // Add entries to the menu.
-            MenuEntries.Add(ungulateMenuEntry);
-            MenuEntries.Add(languageMenuEntry);
+            // Add entries to the menu
+            MenuEntries.Add(playerCountEntry);
             MenuEntries.Add(frobnicateMenuEntry);
             MenuEntries.Add(elfMenuEntry);
             MenuEntries.Add(back);
@@ -85,8 +77,7 @@ namespace Doodle_Duel2
         /// </summary>
         void SetMenuEntryText()
         {
-            ungulateMenuEntry.Text = "Preferred ungulate: " + currentUngulate;
-            languageMenuEntry.Text = "Language: " + languages[currentLanguage];
+            playerCountEntry.Text = "Number of Players: " + playerCount[currentCount];
             frobnicateMenuEntry.Text = "Frobnicate: " + (frobnicate ? "on" : "off");
             elfMenuEntry.Text = "elf: " + elf;
         }
@@ -97,26 +88,13 @@ namespace Doodle_Duel2
         #region Handle Input
 
 
-        /// <summary>
-        /// Event handler for when the Ungulate menu entry is selected.
-        /// </summary>
-        void UngulateMenuEntrySelected(object sender, PlayerIndexEventArgs e)
-        {
-            currentUngulate++;
-
-            if (currentUngulate > Ungulate.Llama)
-                currentUngulate = 0;
-
-            SetMenuEntryText();
-        }
-
 
         /// <summary>
-        /// Event handler for when the Language menu entry is selected.
+        /// Event handler for when the playerCount menu entry is selected.
         /// </summary>
-        void LanguageMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        void PlayerCountEntrySelected(object sender, PlayerIndexEventArgs e)
         {
-            currentLanguage = (currentLanguage + 1) % languages.Length;
+            currentCount = (currentCount + 1) % playerCount.Length;
 
             SetMenuEntryText();
         }
@@ -145,5 +123,6 @@ namespace Doodle_Duel2
 
 
         #endregion
+
     }
 }

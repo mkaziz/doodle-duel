@@ -21,19 +21,11 @@ namespace Doodle_Duel2
         List<PlayerModel> playerModels = new List<PlayerModel>();
         List<ShadowModel> shadowModels = new List<ShadowModel>();
         List<PlatformModel> platformModels = new List<PlatformModel>();
-        
-        private bool hidden;
- 
-        // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
-        // the background should scroll
-        private float maxHeightThusFar = float.MinValue;
-        
-        // Set to true when the background is currently scrolling
-        public bool moveBackground;
+        private bool hidden; 
 
         public bool hideChar
         {
-            get { return hidden; }
+            get{ return hidden;}
             set { hidden = value; }
 
         }
@@ -95,6 +87,13 @@ namespace Doodle_Duel2
                 moveBackground = false;
 
             base.Update(gameTime);
+            
+            foreach (PlatformModel model in platformModels)
+            {
+                model.Update();
+            }
+
+            base.Update(gameTime);
         }
 
         private void scrollObjects()
@@ -144,8 +143,10 @@ namespace Doodle_Duel2
                 {
                     model.Draw(((Game1)Game).camera);
                 }
-
-
+                foreach (PlatformModel model in platformModels)
+                {
+                    model.Draw(((Game1)Game).camera);
+                }
             }
 
             base.Draw(gameTime);
@@ -161,6 +162,7 @@ namespace Doodle_Duel2
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
             
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 0, new Vector3(0,-15,-10),.5f));
             base.LoadContent();
         }
 

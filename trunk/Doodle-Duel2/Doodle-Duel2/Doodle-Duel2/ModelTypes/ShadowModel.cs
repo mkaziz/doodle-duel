@@ -17,11 +17,6 @@ namespace Doodle_Duel2
 
         private PlayerModel linkedPlayer;
 
-        //Vars for smooth jumping
-        private float jumpTime = 0;
-        private float velocity = 20f;//Change around to make jumping higher/lower
-        private float gravity = 4.5f; //Can change around to make jumping faster/slower
-
         public ShadowModel(Model m, PlayerModel player, float rot) : base(m, rot, player.Position, 1)
         {
             model = m;

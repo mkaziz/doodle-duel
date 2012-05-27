@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -10,22 +9,66 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace Doodle_Duel2
 {
-    class PlatformModel : BasicModel
+    public class PlatformModel
     {
-        public PlatformModel(Model m, float rotation, Vector3 position, float scale) : base(m, rotation, position, scale)  {
 
-        }
+        public Model model { get; protected set; }
+        protected Matrix world = Matrix.Identity;
+        private float modelRotation;
+        private Vector3 modelPosition;
+        private float initialHeight;
+        private float modelScale;
 
-        public override void Update()
+        public Vector3 Position
         {
-            base.Update();
+            get { return modelPosition; }
+            set { modelPosition = value; }
+
         }
 
-        public override void Draw(Camera camera)
+        public PlatformModel(Model m, float rotation, Vector3 position, float scale)
         {
-            base.Draw(camera);
+            model = m;
+            modelRotation = rotation;
+            modelPosition = position;
+            initialHeight = position.Y;
+            modelScale = scale;
         }
+
+        public virtual void Update()
+        {
+
+        }
+
+        public virtual Matrix getWorld()
+        {
+            return world;
+        }
+
+        public void Draw(Camera camera)
+        {
+            Matrix[] transforms = new Matrix[model.Bones.Count];
+            model.CopyAbsoluteBoneTransformsTo(transforms);
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect be in mesh.Effects)
+                {
+                    be.EnableDefaultLighting();
+                    be.Projection = camera.projection;
+                    be.View = camera.view;
+                    be.World = getWorld() * mesh.ParentBone.Transform;
+                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateTranslation(modelPosition) * Matrix.CreateScale(modelScale);
+                }
+
+                mesh.Draw();
+            }
+
+
+        }
+
     }
 }
