@@ -41,14 +41,18 @@ namespace Doodle_Duel2
         public void Draw(GameTime gameTime, SpriteBatch sd)
         {
             //this.Update(gameTime);
+
+            sd.Begin();
+                sd.Draw(texture, position, Color.White);
             
-            sd.Draw(texture, position, Color.White);
 
             if (position.Y >= 0 & position.Y <= screenSize.Y)
                 sd.Draw(
                     texture,
                     new Vector2(position.X, position.Y - texture.Height),
                     Color.White);
+
+            sd.End();
 
 
         }
