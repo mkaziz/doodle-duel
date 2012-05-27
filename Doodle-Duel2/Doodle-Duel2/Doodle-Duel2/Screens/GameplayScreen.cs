@@ -120,6 +120,11 @@ namespace Doodle_Duel2
             else
                 modelManager.hideChar = false;
 
+            if (modelManager.moveBackground)
+                background.moveBackground = true;
+            else
+                background.moveBackground = false;
+
             // update background
             background.Update(gameTime);
         }

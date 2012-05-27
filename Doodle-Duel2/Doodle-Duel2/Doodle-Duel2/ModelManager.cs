@@ -19,7 +19,10 @@ namespace Doodle_Duel2
         List<PlayerModel> playerModels = new List<PlayerModel>();
         List<ShadowModel> shadowModels = new List<ShadowModel>();
         List<PlatformModel> platformModels = new List<PlatformModel>();
-        private bool hidden; 
+        private bool hidden;
+ 
+        private float maxHeightThusFar = float.MinValue;
+        public bool moveBackground;
 
         public bool hideChar
         {
@@ -59,11 +62,16 @@ namespace Doodle_Duel2
             {
                 model.Update();
             }
-
+            
             foreach (PlatformModel model in platformModels)
             {
                 model.Update();
             }
+
+            if (heightChanged())
+                moveBackground = true;
+            else
+                moveBackground = false;
 
             base.Update(gameTime);
         }
@@ -108,6 +116,27 @@ namespace Doodle_Duel2
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5 , 10), .5f));
             
             base.LoadContent();
+        }
+
+        private bool heightChanged()
+        {
+            float newMaxHeightThusFar = float.MinValue;
+
+            foreach (PlayerModel m in playerModels)
+            {
+                if (m.maxHeightThusFar > newMaxHeightThusFar)
+                {
+                    newMaxHeightThusFar = m.maxHeightThusFar;
+                }
+            }
+
+            if (newMaxHeightThusFar > maxHeightThusFar)
+            {
+                maxHeightThusFar = newMaxHeightThusFar;
+                return true;
+            }
+
+            return false;
         }
 
     }

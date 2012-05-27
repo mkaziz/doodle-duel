@@ -20,7 +20,8 @@ namespace Doodle_Duel2
         protected float modelRotation;
         protected Vector3 modelPosition;
         protected float initialHeight;
-        protected float modelScale; 
+        protected float modelScale;
+        protected BoundingBox boundingBox;
 
         public BasicModel(Model m, float rotation, Vector3 position, float scale)
         {
