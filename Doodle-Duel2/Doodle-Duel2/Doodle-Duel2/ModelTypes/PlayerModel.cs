@@ -51,6 +51,7 @@ namespace Doodle_Duel2
                 modelPosition = new Vector3(modelPosition.X, initialVelocity - gravityLoss + initialHeight, modelPosition.Z);
                 jumpTime += .05f;
             }
+
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 modelPosition += new Vector3(-.5f, 0, 0);
             else if (Keyboard.GetState().IsKeyDown(Keys.Left))
