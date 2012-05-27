@@ -21,7 +21,8 @@ namespace Doodle_Duel2
         List<PlayerModel> playerModels = new List<PlayerModel>();
         List<ShadowModel> shadowModels = new List<ShadowModel>();
         List<PlatformModel> platformModels = new List<PlatformModel>();
-        
+
+        private String character;
         private bool hidden;
  
         // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
@@ -38,10 +39,11 @@ namespace Doodle_Duel2
 
         }
 
-        public ModelManager(Game game)
+        public ModelManager(Game game,String c)
             : base(game)
         {
-            hidden = false; 
+            hidden = false;
+            character = c;
             // TODO: Construct any child components here
         }
 
@@ -154,7 +156,7 @@ namespace Doodle_Duel2
         protected override void LoadContent()
         {
             //Must add a player and their shadow with matching string tags. 
-            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@"chicken"), 3.184f / 2, new Vector3(0, -15, 0),.5f, "playerone"); 
+            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, -15, 0),.5f, "playerone"); 
             
             playerModels.Add(player1);
             shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));

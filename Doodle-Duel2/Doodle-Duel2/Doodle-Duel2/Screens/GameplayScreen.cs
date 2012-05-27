@@ -48,7 +48,7 @@ namespace Doodle_Duel2
         /// <summary>
         /// Constructor.
         /// </summary>
-        public GameplayScreen(Game g)
+        public GameplayScreen(Game g, string character)
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -56,7 +56,7 @@ namespace Doodle_Duel2
             game = g;
             
             // Add Model 
-            modelManager = new ModelManager(game);
+            modelManager = new ModelManager(game,character);
             game.Components.Add(modelManager);
 
             // Add the scrolling background
