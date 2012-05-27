@@ -156,10 +156,10 @@ namespace Doodle_Duel2
         protected override void LoadContent()
         {
             //Must add a player and their shadow with matching string tags. 
-            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, -15, 0),.5f, "playerone"); 
+            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, -5, 0),.5f, "playerone"); 
             
             playerModels.Add(player1);
-            shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
+            //shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
