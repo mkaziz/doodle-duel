@@ -32,8 +32,12 @@ namespace Doodle_Duel2
         private float jumpTime = 0;
         private float initialVelocity = 20f;
         private float currVelocity = 20f;
-        private float gravity = 3.5f; //Can change around to make jumping faster/slower
+        private float gravity = 10f; //Can change around to make jumping faster/slower
         public float maxHeightThusFar = float.MinValue; 
+
+        public void updateInitialHeight() {
+            initialHeight = modelPosition.Y;
+        }
 
         public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t) : base(m, rotation, position, scale)
         {
@@ -43,7 +47,6 @@ namespace Doodle_Duel2
 
         public override void Update()
         {
-
             // calculate velocity via v = u + at;
             currVelocity = initialVelocity - gravity * jumpTime;
 
@@ -55,7 +58,7 @@ namespace Doodle_Duel2
 
             //that is acceleration downward due to gravity, initial velocity, and the initial position
             float timeSquared = (float)Math.Pow(jumpTime, 2);
-            float distFromPlatform =  currVelocity * jumpTime - gravity * timeSquared;
+            float distFromPlatform =  initialVelocity * jumpTime - gravity * timeSquared/2;
 
             modelPosition = new Vector3(modelPosition.X, distFromPlatform + initialHeight, modelPosition.Z);
 
@@ -88,7 +91,5 @@ namespace Doodle_Duel2
         {
             base.Draw(camera);
         }
-
-
     }
 }

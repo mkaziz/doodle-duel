@@ -16,9 +16,10 @@ namespace Doodle_Duel2
     {
 
         public Model model { get; protected set; }
+        public Vector3 modelPosition;
+        
         protected Matrix world = Matrix.Identity;
         protected float modelRotation;
-        protected Vector3 modelPosition;
         protected float initialHeight;
         protected float modelScale;
         protected BoundingBox boundingBox;
