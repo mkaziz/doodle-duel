@@ -77,7 +77,7 @@ namespace Doodle_Duel2
         void PlayGameMenuEntrySelected(object sender, PlayerIndexEventArgs e)
         {
             LoadingScreen.Load(ScreenManager, true, e.PlayerIndex,
-                               new GameplayScreen(game));
+                               new CharacterSelectScreen(game));
         }
 
 
