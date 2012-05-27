@@ -54,7 +54,6 @@ namespace Doodle_Duel2
 
             foreach (PlayerModel model in playerModels)
             {
-                model.Update();
                 foreach (PlatformModel platform in platformModels)
                 {
                     if (isOnPlatform(model, platform))
@@ -62,6 +61,8 @@ namespace Doodle_Duel2
                         model.setNewPlatform();
                     }
                 }
+
+                model.Update();
             }
 
 
@@ -72,6 +73,8 @@ namespace Doodle_Duel2
             
             foreach (PlatformModel model in platformModels)
             {
+                if (moveBackground)
+                    model.modelPosition.Y -= 0.1f;
                 model.Update();
             }
 
