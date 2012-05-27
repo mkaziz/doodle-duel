@@ -33,8 +33,10 @@ namespace Doodle_Duel2
         Vector2 playerPosition = new Vector2(100, 100);
         Vector2 enemyPosition = new Vector2(100, 100);
         ModelManager modelManager;
-        Game game; 
+        Game game;
         Random random = new Random();
+
+        Background background;
 
         float pauseAlpha;
 
@@ -51,11 +53,14 @@ namespace Doodle_Duel2
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
 
+            game = g;
+            
+            // Add Model 
+            modelManager = new ModelManager(game);
+            game.Components.Add(modelManager);
 
             // Add the scrolling background
-            modelManager = new ModelManager(g);
-            g.Components.Add(modelManager);
-            game = g;
+            background = new Background(game);
 
         }
 
@@ -113,7 +118,10 @@ namespace Doodle_Duel2
             if (coveredByOtherScreen)
                 modelManager.hideChar = true;
             else
-                modelManager.hideChar = false; 
+                modelManager.hideChar = false;
+
+            // update background
+            background.Update(gameTime);
         }
 
 
@@ -191,6 +199,9 @@ namespace Doodle_Duel2
 
                 ScreenManager.FadeBackBufferToBlack(alpha);
             }
+            
+            // draw background
+            background.Draw(gameTime, ScreenManager.SpriteBatch);
 
             ScreenManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }

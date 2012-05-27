@@ -24,8 +24,8 @@ namespace Doodle_Duel2
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            //graphics.PreferredBackBufferWidth = 853;
-            //graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = 853;
+            graphics.PreferredBackBufferHeight = 480;
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
