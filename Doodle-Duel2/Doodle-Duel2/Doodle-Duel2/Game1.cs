@@ -42,7 +42,7 @@ namespace Doodle_Duel2
             // TODO: Add your initialization logic here
 
             // Initialize Camera
-            camera = new Camera(this, new Vector3(0, 0, -45), Vector3.Zero, Vector3.Up);
+            camera = new Camera(this, new Vector3(0, 0, -95), Vector3.Zero, Vector3.Up);
 
             base.Initialize();
         }

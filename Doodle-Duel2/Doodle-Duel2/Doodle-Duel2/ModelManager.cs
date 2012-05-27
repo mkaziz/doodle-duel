@@ -99,7 +99,7 @@ namespace Doodle_Duel2
 
         private void scrollObjects()
         {
-            float scrollAmount = 0.2f;
+            float scrollAmount = 0.6f;
             foreach (PlayerModel model in playerModels)
             {
                 // if background is currently scrolling, move player down the screen
@@ -160,6 +160,7 @@ namespace Doodle_Duel2
             shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
             
             base.LoadContent();
         }
