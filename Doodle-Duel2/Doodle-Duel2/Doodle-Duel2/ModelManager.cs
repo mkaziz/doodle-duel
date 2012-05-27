@@ -55,6 +55,13 @@ namespace Doodle_Duel2
             foreach (PlayerModel model in playerModels)
             {
                 model.Update();
+                foreach (PlatformModel platform in platformModels)
+                {
+                    if (isOnPlatform(model, platform))
+                    {
+                        model.updateInitialHeight();
+                    }
+                }
             }
 
 
@@ -135,6 +142,15 @@ namespace Doodle_Duel2
                 maxHeightThusFar = newMaxHeightThusFar;
                 return true;
             }
+
+            return false;
+        }
+
+        private bool isOnPlatform(PlayerModel player, PlatformModel platform)
+        {
+            if (player.currJumpState == PlayerModel.JumpState.DOWN  &&
+                (player.modelPosition.Y - platform.modelPosition.Y < 2))
+                return true;
 
             return false;
         }
