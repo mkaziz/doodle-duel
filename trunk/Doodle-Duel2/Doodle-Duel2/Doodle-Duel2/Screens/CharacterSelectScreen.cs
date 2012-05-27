@@ -31,7 +31,7 @@ namespace Doodle_Duel2
         int selectedEntry = 0;
         KeyboardState oldKeyboard = Keyboard.GetState();
         PlayerModel playerOne;
-        String[] charactersAvailable = {"chicken","cow"};
+        String[] charactersAvailable = { "chicken", "cow" };
         int characterDecided = 0;
 
         #region Initialization
@@ -145,11 +145,11 @@ namespace Doodle_Duel2
             KeyboardState k = Keyboard.GetState();
 
             if (k.IsKeyDown(Keys.Down) && !oldKeyboard.IsKeyDown(Keys.Down))
-                if (selectedEntry < MenuEntries.Count-1)
+                if (selectedEntry < MenuEntries.Count - 1)
                     selectedEntry++;
             if (k.IsKeyDown(Keys.Up) && !oldKeyboard.IsKeyDown(Keys.Up))
-                if(selectedEntry>0)
-                    selectedEntry--; 
+                if (selectedEntry > 0)
+                    selectedEntry--;
 
             // Update each nested MenuEntry object.
             for (int i = 0; i < MenuEntries.Count; i++)
@@ -165,7 +165,7 @@ namespace Doodle_Duel2
         protected void LoadContent()
         {
             //Must add a player and their shadow with matching string tags. 
-            playerOne = new PlayerModel(game.Content.Load<Model>(@charactersAvailable[characterDecided]),3.184f/2, new Vector3(0,0,0), .5f, "playerone");
+            playerOne = new PlayerModel(game.Content.Load<Model>(@charactersAvailable[characterDecided]), 3.184f / 2, new Vector3(0, 0, 0), .5f, "playerone");
             base.LoadContent();
         }
 
@@ -195,7 +195,7 @@ namespace Doodle_Duel2
 
                 bool isSelected = IsActive && (i == selectedEntry);
 
-                menuEntry.Position += new Vector2(0, graphics.Viewport.Height/2);
+                menuEntry.Position += new Vector2(0, graphics.Viewport.Height / 2);
                 menuEntry.Draw(this, isSelected, gameTime);
             }
 
