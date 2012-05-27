@@ -17,6 +17,7 @@ namespace Doodle_Duel2
 
         Texture2D texture;
         Vector2 position, screenSize;
+        public bool moveBackground = false;
 
         public Background(Game g)
         {
@@ -31,7 +32,8 @@ namespace Doodle_Duel2
         public void Update(GameTime gameTime)
         {
             // TODO: Add your update code here
-            position.Y += 3;
+            if (moveBackground)
+                position.Y += 3;
 
             if (position.Y >= screenSize.Y)
                 position.Y = position.Y - texture.Height;
