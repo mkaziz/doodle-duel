@@ -61,10 +61,6 @@ namespace Doodle_Duel2
 
             foreach (PlayerModel model in playerModels)
             {
-                // if background is currently scrolling, move player down the screen
-                if (moveBackground)
-                    model.modelPosition.Y -= 0.1f;
-
                 foreach (PlatformModel platform in platformModels)
                 {
                     // If there is a collision between player and platform, set the new platform
@@ -86,11 +82,12 @@ namespace Doodle_Duel2
             foreach (PlatformModel model in platformModels)
             {
                 // if background is currently scrolling, move platform down the screen
-                if (moveBackground)
-                    model.modelPosition.Y -= 0.1f;
                 model.Update();
             }
 
+            if (moveBackground)
+                scrollObjects();
+            
             // if maxHeightThusFar has changed, the background should be scrolling
             if (heightChanged())
                 moveBackground = true;
@@ -98,6 +95,30 @@ namespace Doodle_Duel2
                 moveBackground = false;
 
             base.Update(gameTime);
+        }
+
+        private void scrollObjects()
+        {
+            float scrollAmount = 0.2f;
+            foreach (PlayerModel model in playerModels)
+            {
+                // if background is currently scrolling, move player down the screen
+                model.modelPosition.Y -= scrollAmount;
+                model.maxHeightThusFar -= scrollAmount;
+                model.initialHeight -= scrollAmount;
+            }
+
+            foreach (ShadowModel model in shadowModels)
+            {
+                model.modelPosition.Y -= scrollAmount;
+            }
+
+            foreach (PlatformModel model in platformModels)
+            {
+                // if background is currently scrolling, move platform down the screen
+                model.modelPosition.Y -= scrollAmount;    
+            }
+            
         }
 
         public override void Draw(GameTime gameTime)
@@ -137,8 +158,8 @@ namespace Doodle_Duel2
             
             playerModels.Add(player1);
             shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 10), .5f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 10), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
             
             base.LoadContent();
         }

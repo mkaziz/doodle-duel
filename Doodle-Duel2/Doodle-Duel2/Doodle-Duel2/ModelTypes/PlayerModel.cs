@@ -28,6 +28,10 @@ namespace Doodle_Duel2
         {
             get { return modelPosition.Y; }
         }
+
+        // override from BasicModel, make public
+        public float initialHeight;
+
         //Vars for smooth jumping
         private float jumpTime = 0;
         private float initialVelocity = 20f;
