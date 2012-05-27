@@ -22,7 +22,6 @@ namespace Doodle_Duel2
         {
 
             get { return new Vector3(modelPosition.X,initialHeight-2, modelPosition.Z); }
-            set { modelPosition = value;}
         }
 
         public float CurrentHeight 
