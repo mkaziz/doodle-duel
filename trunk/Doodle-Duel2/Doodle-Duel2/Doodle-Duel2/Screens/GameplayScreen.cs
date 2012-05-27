@@ -208,6 +208,7 @@ namespace Doodle_Duel2
             // draw background
             background.Draw(gameTime, ScreenManager.SpriteBatch);
 
+            // SpriteBatch messes with the 3D drawing; this line is a fix for that
             ScreenManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
         }
 
