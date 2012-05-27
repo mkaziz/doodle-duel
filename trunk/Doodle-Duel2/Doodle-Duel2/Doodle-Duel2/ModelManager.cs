@@ -26,7 +26,7 @@ namespace Doodle_Duel2
 
         public bool hideChar
         {
-            get{ return hidden;}
+            get { return hidden; }
             set { hidden = value; }
 
         }
@@ -59,7 +59,7 @@ namespace Doodle_Duel2
                 {
                     if (isOnPlatform(model, platform))
                     {
-                        model.updateInitialHeight();
+                        model.setNewPlatform();
                     }
                 }
             }

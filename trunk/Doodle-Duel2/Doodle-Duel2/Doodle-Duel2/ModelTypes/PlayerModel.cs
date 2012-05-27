@@ -35,8 +35,10 @@ namespace Doodle_Duel2
         private float gravity = 10f; //Can change around to make jumping faster/slower
         public float maxHeightThusFar = float.MinValue; 
 
-        public void updateInitialHeight() {
+        public void setNewPlatform() {
             initialHeight = modelPosition.Y;
+            jumpTime = 0f;
+            currVelocity = initialVelocity;
         }
 
         public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t) : base(m, rotation, position, scale)
