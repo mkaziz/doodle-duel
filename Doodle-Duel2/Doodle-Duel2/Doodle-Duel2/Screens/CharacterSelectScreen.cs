@@ -31,7 +31,7 @@ namespace Doodle_Duel2
         int selectedEntry = 0;
         KeyboardState oldKeyboard = Keyboard.GetState();
         PlayerModel playerOne;
-        String[] charactersAvailable = { "chicken", "cow" };
+        String[] charactersAvailable = { "chicken", "cow","monkey" };
         int characterDecided = 0;
 
         #region Initialization
