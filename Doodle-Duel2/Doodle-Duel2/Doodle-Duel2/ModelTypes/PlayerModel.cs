@@ -41,14 +41,12 @@ namespace Doodle_Duel2
             get { return modelPosition.Y; }
         }
 
-<<<<<<< .mine        public float iHeight
+        public float iHeight
         {
             get { return initialHeight; }
             set { initialHeight = value; }
         }
-=======        // override from BasicModel, make public
-        public new float initialHeight;
->>>>>>> .theirs
+
         public float jTime
         {
             get { return jumpTime; }
@@ -140,3 +138,4 @@ namespace Doodle_Duel2
 
     }
 }
+
