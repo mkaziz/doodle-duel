@@ -29,7 +29,7 @@ namespace Doodle_Duel2
 
         // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
         // the background should scroll
-        private float maxHeightThusFar = float.MinValue;
+        private float maxHeightThusFar = 0;
 
         // Set to true when the background is currently scrolling
         public bool moveBackground;
@@ -68,26 +68,7 @@ namespace Doodle_Duel2
 
             foreach (PlayerModel model in playerModels)
             {
-                /*foreach (PlatformModel platform in platformModels)
-                {
-                    // If there is a collision between player and platform, set the new platform
-                    // as the base platform for that player
-                    if (isOnPlatform(model, platform))
-                    {
-                        model.setNewPlatform();
-                    }
-
-                }
-                */
                 isOnPlatform();
-                /*if (model.initialHeight > 0f)
-                {
-                    scrollObjects();
-                    moveBackground = true;
-                }
-                else
-                    moveBackground = false;
-                */
                 model.Update();
             }
 
@@ -99,37 +80,36 @@ namespace Doodle_Duel2
             foreach (PlatformModel model in platformModels)
             {
 
-                if (model.modelPosition.Y < -35)
+                /*if (model.modelPosition.Y < -35)
                 {
                     float xRange = 50f;
                     model.modelPosition.Y = 20;
                     model.modelPosition.X = (float)random.NextDouble() * xRange - xRange / 2;
-                }
+                }*/
                 model.Update();
             }
-            /*
-            /*if (moveBackground)
-                scrollObjects();
-            */
+            
+            
 
-            // if maxHeightThusFar has changed, the background should be scrolling
-            /*if (heightChanged())
+            //if maxHeightThusFar has changed, the background should be scrolling
+            if (heightChanged())
+            {
                 moveBackground = true;
+                scrollObjects();
+            }
             else
-                moveBackground = false;
-            */
+                moveBackground = false; 
             base.Update(gameTime);
         }
 
-        /*private void scrollObjects()
+        private void scrollObjects()
         {
             float scrollAmount = 0.6f;
             foreach (PlayerModel model in playerModels)
             {
-                // if background is currently scrolling, move player down the screen
                 model.Position -= new Vector3(0,scrollAmount,0);
-                //model.maxHeightThusFar -= scrollAmount;
-                //model.initialHeight -= scrollAmount;
+                model.maxHeightThusFar -= scrollAmount;
+                model.iHeight -= scrollAmount;
             }
 
             foreach (ShadowModel model in shadowModels)
@@ -139,11 +119,10 @@ namespace Doodle_Duel2
 
             foreach (PlatformModel model in platformModels)
             {
-                // if background is currently scrolling, move platform down the screen
                 model.modelPosition.Y -= scrollAmount;    
             }
              
-        }*/
+        }
 
         public override void Draw(GameTime gameTime)
         {
@@ -196,40 +175,22 @@ namespace Doodle_Duel2
             base.LoadContent();
         }
 
-        /*private bool heightChanged()
+        private bool heightChanged()
         {
-            float newMaxHeightThusFar = float.MinValue;
-
+            bool returnval = false;
             // find the maximum Y-point of all players in the game
             foreach (PlayerModel m in playerModels)
-            {
-                if (m.maxHeightThusFar > newMaxHeightThusFar)
+            { 
+                if (m.maxHeightThusFar > maxHeightThusFar)
                 {
-                    newMaxHeightThusFar = m.maxHeightThusFar;
+                    maxHeightThusFar = m.maxHeightThusFar;
+                    returnval = true;
                 }
             }
 
-            // if this is greater than the maximum y point achieved thus far, 
-            // scroll background and set maxHeightThusFar appropriately
-            if (newMaxHeightThusFar > maxHeightThusFar)
-            {
-                maxHeightThusFar = newMaxHeightThusFar;
-                return true;
-            }
+            return returnval;
+        } 
 
-            return false;
-        } */
-
-        private float getMaxPlatformHeight()
-        {
-            float height = float.MinValue;
-            foreach (PlatformModel platform in platformModels)
-            {
-                if (platform.modelPosition.Y > height)
-                    height = platform.modelPosition.Y;
-            }
-            return height;
-        }
 
         private void isOnPlatform()
         {
@@ -239,13 +200,13 @@ namespace Doodle_Duel2
                 //Check x
                 if (pm != null)
                 {
-                    if ((pm.modelPosition.X - pm.Scale * 20) < playerModels[0].Position.X && playerModels[0].Position.X < (pm.modelPosition.X + pm.Scale * 20))
+                    if (playerModels[0].cVelocity < 0)
                     {
-                        if (Math.Abs(Math.Abs(pm.modelPosition.Y) - Math.Abs(playerModels[0].cPosition.Y)) < 1)
+                        if ((pm.modelPosition.X - pm.Scale * 20) < playerModels[0].Position.X && playerModels[0].Position.X < (pm.modelPosition.X + pm.Scale * 20))
                         {
-                            if ((pm.modelPosition.Z - pm.Scale * 20) < playerModels[0].Position.Z && playerModels[0].Position.Z < (pm.modelPosition.Z + pm.Scale * 20))
+                            if (Math.Abs(Math.Abs(pm.modelPosition.Y) - Math.Abs(playerModels[0].cPosition.Y)) < 1)
                             {
-                                if (playerModels[0].cVelocity < 0)
+                                if ((pm.modelPosition.Z - pm.Scale * 20) < playerModels[0].Position.Z && playerModels[0].Position.Z < (pm.modelPosition.Z + pm.Scale * 20))
                                 {
                                     playerModels[0].iHeight = pm.modelPosition.Y;
                                     playerModels[0].jTime = 0;
