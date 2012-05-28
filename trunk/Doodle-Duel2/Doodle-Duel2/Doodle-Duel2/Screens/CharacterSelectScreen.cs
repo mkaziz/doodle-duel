@@ -165,7 +165,7 @@ namespace Doodle_Duel2
         protected void LoadContent()
         {
             //Must add a player and their shadow with matching string tags. 
-            playerOne = new PlayerModel(game.Content.Load<Model>(@charactersAvailable[characterDecided]), 3.184f / 2, new Vector3(0, 0, 0), .5f, "playerone");
+            playerOne = new PlayerModel(game.Content.Load<Model>(@charactersAvailable[characterDecided]), 3.184f / 2, new Vector3(0, 0, 0), .5f);
             base.LoadContent();
         }
 
