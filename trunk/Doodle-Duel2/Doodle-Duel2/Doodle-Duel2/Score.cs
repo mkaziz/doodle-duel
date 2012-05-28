@@ -18,7 +18,7 @@ namespace Doodle_Duel2
 
         public SpriteFont Font { get; set; }
 
-        public int Score { get; set; }
+        public int scoreVal { get; set; }
 
         public Score()
         {
@@ -29,7 +29,7 @@ namespace Doodle_Duel2
             // Draw the Score in the top-left of screen
             spriteBatch.DrawString(
                 Font,                          // SpriteFont
-                "Score: " + Score.ToString(),  // Text
+                "Score: " + scoreVal.ToString(),  // Text
                 scorePos,                      // Position
                 Color.White);                  // Tint
         }
