@@ -64,13 +64,6 @@ namespace Doodle_Duel2
         private float velocity = 20f;//Change around to make jumping higher/lower
         private float gravity = 4.5f; //Can change around to make jumping faster/slower
         private float currentVelocity;
-        private float maxHeight; 
-
-        public float maxHeightThusFar 
-        {
-            get { return maxHeight; }
-            set { maxHeight = value; }
-        }
 
         public PlayerModel(Model m, float rotation, Vector3 position, float scale)
         {
@@ -79,7 +72,6 @@ namespace Doodle_Duel2
             modelPosition = position;
             initialHeight = position.Y;
             modelScale = scale;
-            maxHeight = position.Y;
         }
 
         public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t)
@@ -90,7 +82,6 @@ namespace Doodle_Duel2
             modelPosition = position;
             initialHeight = position.Y;
             modelScale = scale;
-            maxHeight = position.Y;
         }
 
         public virtual void Update()
@@ -104,8 +95,6 @@ namespace Doodle_Duel2
                 float gravityLoss = gravity * timeSquared;
                 modelPosition = new Vector3(modelPosition.X, initialVelocity - gravityLoss + initialHeight, modelPosition.Z);
                 jumpTime += .05f;
-            if (maxHeight < modelPosition.Y)
-               maxHeight = modelPosition.Y;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 modelPosition += new Vector3(-.5f, 0, 0);
