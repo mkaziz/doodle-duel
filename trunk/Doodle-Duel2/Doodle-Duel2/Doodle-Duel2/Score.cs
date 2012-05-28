@@ -31,7 +31,7 @@ namespace Doodle_Duel2
                 Font,                          // SpriteFont
                 "Score: " + scoreVal.ToString(),  // Text
                 scorePos,                      // Position
-                Color.White);                  // Tint
+                Color.Black);                  // Tint
         }
     }
 }
