@@ -69,6 +69,15 @@ namespace Doodle_Duel2
             foreach (PlayerModel model in playerModels)
             {
                 isOnPlatform();
+
+                if (model.iHeight > -20f)
+                {
+                    scrollObjects();
+                    moveBackground = true;
+                }
+                else
+                    moveBackground = false;
+
                 model.Update();
             }
 
@@ -90,7 +99,7 @@ namespace Doodle_Duel2
             }
             
             
-
+            /*
             //if maxHeightThusFar has changed, the background should be scrolling
             if (heightChanged())
             {
@@ -99,6 +108,8 @@ namespace Doodle_Duel2
             }
             else
                 moveBackground = false; 
+            */
+
             base.Update(gameTime);
         }
 
@@ -192,7 +203,7 @@ namespace Doodle_Duel2
         } 
 
 
-        private void isOnPlatform()
+        private bool isOnPlatform()
         {
             foreach (var component in platformModels)
             {
@@ -210,13 +221,14 @@ namespace Doodle_Duel2
                                 {
                                     playerModels[0].iHeight = pm.modelPosition.Y;
                                     playerModels[0].jTime = 0;
+                                    return true;
                                 }
                             }
                         }
                     }
                    }
-
             }
+            return false;
         }
     }
 }
