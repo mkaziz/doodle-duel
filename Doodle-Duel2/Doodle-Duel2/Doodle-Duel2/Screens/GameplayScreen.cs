@@ -57,6 +57,7 @@ namespace Doodle_Duel2
             
             // Add Model 
             modelManager = new ModelManager(game,character);
+            
             game.Components.Add(modelManager);
 
             // Add the scrolling background

@@ -24,6 +24,7 @@ namespace Doodle_Duel2
 
         private String character;
         private bool hidden;
+        private Camera camera;
  
         // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
         // the background should scroll
@@ -44,6 +45,7 @@ namespace Doodle_Duel2
         {
             hidden = false;
             character = c;
+            camera = ((Game1)game).camera;
             // TODO: Construct any child components here
         }
 
@@ -71,7 +73,16 @@ namespace Doodle_Duel2
                     {
                         model.setNewPlatform();
                     }
+
                 }
+
+                if (model.initialHeight > 0f)
+                {
+                    scrollObjects();
+                    moveBackground = true;
+                }
+                else
+                    moveBackground = false;
 
                 model.Update();
             }
@@ -83,10 +94,15 @@ namespace Doodle_Duel2
             
             foreach (PlatformModel model in platformModels)
             {
-                // if background is currently scrolling, move platform down the screen
+                
+                if (model.modelPosition.Y < -35)
+                {
+                    model.modelPosition.Y = 20;
+                    //model.modelPosition.X = 10;
+                }
                 model.Update();
             }
-
+            /*
             if (moveBackground)
                 scrollObjects();
             
@@ -95,7 +111,7 @@ namespace Doodle_Duel2
                 moveBackground = true;
             else
                 moveBackground = false;
-
+            */
             base.Update(gameTime);
         }
 
@@ -160,9 +176,12 @@ namespace Doodle_Duel2
             
             playerModels.Add(player1);
             //shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
+            //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -15, 0), .5f));
+            //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
+            //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -20, 0), .3f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 0, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 20, 0), .1f));
             
             base.LoadContent();
         }
@@ -189,6 +208,17 @@ namespace Doodle_Duel2
             }
 
             return false;
+        }
+
+        private float getMaxPlatformHeight()
+        {
+            float height = float.MinValue;
+            foreach (PlatformModel platform in platformModels)
+            {
+                if (platform.modelPosition.Y > height)
+                    height = platform.modelPosition.Y;
+            }
+            return height;
         }
 
         private bool isOnPlatform(PlayerModel player, PlatformModel platform)

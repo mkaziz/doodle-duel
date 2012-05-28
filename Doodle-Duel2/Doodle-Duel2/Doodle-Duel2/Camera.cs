@@ -20,6 +20,13 @@ namespace Doodle_Duel2
 
         public Matrix view { get; protected set; }
         public Matrix projection { get; protected set; }
+        
+        public BoundingFrustum getBoundingFrustum() {
+
+            BoundingFrustum frustum = new BoundingFrustum(view * projection);
+
+            return frustum;
+        }
 
         /// <summary>
         /// Constructs a new camera instance
