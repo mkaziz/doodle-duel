@@ -40,6 +40,9 @@ namespace Doodle_Duel2
 
         float pauseAlpha;
 
+        Score score;
+        SpriteBatch sb;
+
         #endregion
 
         #region Initialization
@@ -74,7 +77,13 @@ namespace Doodle_Duel2
             if (content == null)
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
+            sb = new SpriteBatch(ScreenManager.GraphicsDevice);
+
             gameFont = content.Load<SpriteFont>("gamefont");
+
+            score = new Score();
+            score.Font = content.Load<SpriteFont>("Arial");
+            score.scoreVal = 0;
 
             // A real game would probably have more content than this sample, so
             // it would take longer to load. We simulate that by delaying for a
@@ -208,6 +217,10 @@ namespace Doodle_Duel2
             
             // draw background
             background.Draw(gameTime, ScreenManager.SpriteBatch);
+
+            sb.Begin();
+            score.Draw(sb);
+            sb.End();
 
             // SpriteBatch messes with the 3D drawing; this line is a fix for that
             ScreenManager.GraphicsDevice.DepthStencilState = DepthStencilState.Default;
