@@ -65,6 +65,12 @@ namespace Doodle_Duel2
         private float gravity = 4.5f; //Can change around to make jumping faster/slower
         private float currentVelocity;
 
+        public float initialVelocity 
+        {
+            get { return velocity; }
+            set { velocity = value; }
+        }
+
         public PlayerModel(Model m, float rotation, Vector3 position, float scale)
         {
             model = m;
