@@ -93,7 +93,7 @@ namespace Doodle_Duel2
                 {
                     float yRange = 5f;
                     float xRange = 50f;
-                    model.modelPosition.Y = 15f + (float)random.NextDouble() * yRange - yRange / 2;
+                    model.modelPosition.Y = 35f + (float)random.NextDouble() * yRange - yRange / 2;
                     model.modelPosition.X = (float)random.NextDouble() * xRange - xRange / 2;
                 }
                 model.Update();
@@ -166,8 +166,9 @@ namespace Doodle_Duel2
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -20, 0), .3f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50/ 2, 0, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 0, 0), .5f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 20, 0), .3f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 35, 0), .3f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, -5, 0), .4f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 45, 0), .6f));
             
