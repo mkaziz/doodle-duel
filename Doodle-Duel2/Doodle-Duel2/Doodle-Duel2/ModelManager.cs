@@ -25,7 +25,7 @@ namespace Doodle_Duel2
         private String character;
         private bool hidden;
         private Camera camera;
- 
+        private Random random;
         // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
         // the background should scroll
         private float maxHeightThusFar = float.MinValue;
@@ -46,6 +46,7 @@ namespace Doodle_Duel2
             hidden = false;
             character = c;
             camera = ((Game1)game).camera;
+            random = new Random();
             // TODO: Construct any child components here
         }
 
@@ -97,8 +98,9 @@ namespace Doodle_Duel2
                 
                 if (model.modelPosition.Y < -35)
                 {
+                    float xRange = 50f;
                     model.modelPosition.Y = 20;
-                    //model.modelPosition.X = 10;
+                    model.modelPosition.X = (float)random.NextDouble()*xRange-xRange/2;
                 }
                 model.Update();
             }
