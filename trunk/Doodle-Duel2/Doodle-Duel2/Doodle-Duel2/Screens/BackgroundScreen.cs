@@ -27,6 +27,7 @@ namespace Doodle_Duel2
 
         ContentManager content;
         Texture2D backgroundTexture;
+        SpriteBatch sb;
 
         #endregion
 

@@ -12,7 +12,7 @@ using System.Text;
 
 namespace Doodle_Duel2
 {
-    public class Score
+    class Score
     {
         private Vector2 scorePos = new Vector2(20, 10);
 
