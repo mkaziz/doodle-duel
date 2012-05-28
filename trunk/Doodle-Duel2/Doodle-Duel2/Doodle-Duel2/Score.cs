@@ -36,3 +36,6 @@ namespace Doodle_Duel2
         }
     }
 }
+
+//class implementation help from Code for Cake
+//http://codeforcake.com/blog/?p=185
