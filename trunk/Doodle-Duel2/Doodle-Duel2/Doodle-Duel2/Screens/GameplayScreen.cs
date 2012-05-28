@@ -123,7 +123,12 @@ namespace Doodle_Duel2
             if (modelManager.moveBackground == true)
                 score.scoreVal++;
 
-      
+            if (modelManager.gameOver)
+            {
+                ScreenManager.AddScreen(new GameOverScreen(), ControllingPlayer);
+                ScreenManager.RemoveScreen(this);
+                modelManager.Dispose();
+            }
             base.Update(gameTime, otherScreenHasFocus, false);
             // Gradually fade in or out depending on whether we are covered by the pause screen.
             if (coveredByOtherScreen)

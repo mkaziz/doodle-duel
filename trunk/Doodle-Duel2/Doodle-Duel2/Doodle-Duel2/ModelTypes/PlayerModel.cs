@@ -134,8 +134,6 @@ namespace Doodle_Duel2
 
         }
 
-
-
     }
 }
 
