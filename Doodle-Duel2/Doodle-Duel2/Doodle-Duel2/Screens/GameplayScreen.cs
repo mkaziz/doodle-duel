@@ -82,7 +82,7 @@ namespace Doodle_Duel2
             gameFont = content.Load<SpriteFont>("gamefont");
 
             score = new Score();
-            score.Font = content.Load<SpriteFont>("Arial");
+            score.Font = content.Load<SpriteFont>("score");
             score.scoreVal = 0;
 
             // A real game would probably have more content than this sample, so
