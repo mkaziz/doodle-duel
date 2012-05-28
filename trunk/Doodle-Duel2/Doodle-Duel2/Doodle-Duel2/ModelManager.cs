@@ -91,9 +91,9 @@ namespace Doodle_Duel2
 
                 if (model.modelPosition.Y < -45)
                 {
-                    float yRange = 5f;
+                    float yRange = 10f;
                     float xRange = 50f;
-                    model.modelPosition.Y = 35f + (float)random.NextDouble() * yRange - yRange / 2;
+                    model.modelPosition.Y = getMaxPlatformHeight() + 15f + (float)random.NextDouble() * yRange - yRange / 2;
                     model.modelPosition.X = (float)random.NextDouble() * xRange - xRange / 2;
                 }
                 model.Update();
@@ -210,5 +210,17 @@ namespace Doodle_Duel2
             if (player.cPosition.Y < -(Game.GraphicsDevice.Viewport.Height/2))
                 gameOver = true; 
         }
+
+        private float getMaxPlatformHeight()
+        {
+            float height = float.MinValue;
+            foreach (PlatformModel platform in platformModels)
+            {
+                if (platform.modelPosition.Y > height)
+                    height = platform.modelPosition.Y;
+            }
+            return height;
+        }
     }
 }
+
