@@ -14,14 +14,15 @@ namespace Doodle_Duel2
 {
     class Score
     {
-        private Vector2 scorePos = new Vector2(20, 10);
+        private Vector2 scorePos;
 
         public SpriteFont Font { get; set; }
 
         public int scoreVal { get; set; }
 
-        public Score()
+        public Score(int x, int y)
         {
+            scorePos = new Vector2(x, y);
         }
 
         public void Draw(SpriteBatch spriteBatch)

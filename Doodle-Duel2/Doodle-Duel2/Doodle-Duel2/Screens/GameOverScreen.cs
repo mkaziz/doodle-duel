@@ -8,7 +8,12 @@
 #endregion
 
 #region Using Statements
+using System;
+using System.Threading;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 #endregion
 
 namespace Doodle_Duel2
@@ -21,6 +26,7 @@ namespace Doodle_Duel2
         #region Initialization
 
         public Game game;
+//        Score finalScore = new Score();
 
         /// <summary>
         /// Constructor fills in the menu contents.
@@ -54,6 +60,11 @@ namespace Doodle_Duel2
             game = g;
         }
 
+        public void LoadContent()
+        {
+           // finalScore.Font = game.Content.Load<SpriteFont>("gamefont");
+            //finalScore.
+        }
 
         #endregion
 

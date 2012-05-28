@@ -81,7 +81,7 @@ namespace Doodle_Duel2
 
             gameFont = content.Load<SpriteFont>("gamefont");
 
-            score = new Score();
+            score = new Score(20, 10);
             score.Font = content.Load<SpriteFont>("score");
             score.scoreVal = 0;
 
