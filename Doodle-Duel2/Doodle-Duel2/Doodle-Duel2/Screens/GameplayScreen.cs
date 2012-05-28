@@ -116,15 +116,13 @@ namespace Doodle_Duel2
         /// property, so the game will stop updating when the pause menu is active,
         /// or if you tab away to a different application.
         /// </summary>
-
-        int counter = 0;
         
         public override void Update(GameTime gameTime, bool otherScreenHasFocus,
                                                        bool coveredByOtherScreen)
         {
-            counter++;
-            if (counter % 50 == 0)
+            if (modelManager.moveBackground == true)
                 score.scoreVal++;
+
       
             base.Update(gameTime, otherScreenHasFocus, false);
             // Gradually fade in or out depending on whether we are covered by the pause screen.
