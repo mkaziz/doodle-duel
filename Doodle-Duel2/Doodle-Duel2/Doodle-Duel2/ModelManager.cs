@@ -80,12 +80,12 @@ namespace Doodle_Duel2
             foreach (PlatformModel model in platformModels)
             {
 
-                /*if (model.modelPosition.Y < -35)
+                if (model.modelPosition.Y < -35)
                 {
                     float xRange = 50f;
                     model.modelPosition.Y = 20;
                     model.modelPosition.X = (float)random.NextDouble() * xRange - xRange / 2;
-                }*/
+                }
                 model.Update();
             }
             
@@ -204,7 +204,7 @@ namespace Doodle_Duel2
                     {
                         if ((pm.modelPosition.X - pm.Scale * 20) < playerModels[0].Position.X && playerModels[0].Position.X < (pm.modelPosition.X + pm.Scale * 20))
                         {
-                            if (Math.Abs(Math.Abs(pm.modelPosition.Y) - Math.Abs(playerModels[0].cPosition.Y)) < 1)
+                            if (Math.Abs(pm.modelPosition.Y - playerModels[0].cPosition.Y) < 1)
                             {
                                 if ((pm.modelPosition.Z - pm.Scale * 20) < playerModels[0].Position.Z && playerModels[0].Position.Z < (pm.modelPosition.Z + pm.Scale * 20))
                                 {
@@ -214,7 +214,7 @@ namespace Doodle_Duel2
                             }
                         }
                     }
-                }
+                   }
 
             }
         }
