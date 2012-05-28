@@ -103,6 +103,10 @@ namespace Doodle_Duel2
                     float xRange = 50f;
                     model.modelPosition.Y = getMaxPlatformHeight() + 15f + (float)random.NextDouble() * yRange - yRange / 2;
                     model.modelPosition.X = (float)random.NextDouble() * xRange - xRange / 2;
+                    if (model == platformModels[platformModels.Count-1])
+                    {
+                        trampolineModels[0].modelPosition = model.modelPosition + new Vector3(0, 3, -8);
+                    }
                 }
                 model.Update();
             }
