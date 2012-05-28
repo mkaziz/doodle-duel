@@ -17,19 +17,20 @@ namespace Doodle_Duel2
 
         // There shouldn't be any off these in the game
         List<BasicModel> models = new List<BasicModel>();
-        
+
         List<PlayerModel> playerModels = new List<PlayerModel>();
         List<ShadowModel> shadowModels = new List<ShadowModel>();
         List<PlatformModel> platformModels = new List<PlatformModel>();
 
         private String character;
         private bool hidden;
-        private Camera camera;
+<<<<<<< .mine
+=======        private Camera camera;
         private Random random;
-        // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
+>>>>>>> .theirs        // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
         // the background should scroll
         private float maxHeightThusFar = float.MinValue;
-        
+
         // Set to true when the background is currently scrolling
         public bool moveBackground;
 
@@ -40,7 +41,7 @@ namespace Doodle_Duel2
 
         }
 
-        public ModelManager(Game game,String c)
+        public ModelManager(Game game, String c)
             : base(game)
         {
             hidden = false;
@@ -59,6 +60,7 @@ namespace Doodle_Duel2
 
         public override void Update(GameTime gameTime)
         {
+
             foreach (BasicModel model in models)
             {
                 model.Update();
@@ -66,7 +68,7 @@ namespace Doodle_Duel2
 
             foreach (PlayerModel model in playerModels)
             {
-                foreach (PlatformModel platform in platformModels)
+                /*foreach (PlatformModel platform in platformModels)
                 {
                     // If there is a collision between player and platform, set the new platform
                     // as the base platform for that player
@@ -76,7 +78,8 @@ namespace Doodle_Duel2
                     }
 
                 }
-
+                */
+                isOnPlatform();
                 if (model.initialHeight > 0f)
                 {
                     scrollObjects();
@@ -92,7 +95,7 @@ namespace Doodle_Duel2
             {
                 model.Update();
             }
-            
+
             foreach (PlatformModel model in platformModels)
             {
                 
@@ -105,11 +108,12 @@ namespace Doodle_Duel2
                 model.Update();
             }
             /*
-            if (moveBackground)
+            /*if (moveBackground)
                 scrollObjects();
-            
+            */
+
             // if maxHeightThusFar has changed, the background should be scrolling
-            if (heightChanged())
+            /*if (heightChanged())
                 moveBackground = true;
             else
                 moveBackground = false;
@@ -117,15 +121,15 @@ namespace Doodle_Duel2
             base.Update(gameTime);
         }
 
-        private void scrollObjects()
+        /*private void scrollObjects()
         {
             float scrollAmount = 0.6f;
             foreach (PlayerModel model in playerModels)
             {
                 // if background is currently scrolling, move player down the screen
-                model.modelPosition.Y -= scrollAmount;
-                model.maxHeightThusFar -= scrollAmount;
-                model.initialHeight -= scrollAmount;
+                model.Position -= new Vector3(0,scrollAmount,0);
+                //model.maxHeightThusFar -= scrollAmount;
+                //model.initialHeight -= scrollAmount;
             }
 
             foreach (ShadowModel model in shadowModels)
@@ -138,8 +142,8 @@ namespace Doodle_Duel2
                 // if background is currently scrolling, move platform down the screen
                 model.modelPosition.Y -= scrollAmount;    
             }
-            
-        }
+             
+        }*/
 
         public override void Draw(GameTime gameTime)
         {
@@ -148,8 +152,8 @@ namespace Doodle_Duel2
                 foreach (PlatformModel model in platformModels)
                 {
                     model.Draw(((Game1)Game).camera);
-                } 
-                
+                }
+
                 foreach (BasicModel model in models)
                 {
                     model.Draw(((Game1)Game).camera);
@@ -173,11 +177,18 @@ namespace Doodle_Duel2
 
         protected override void LoadContent()
         {
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 10, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
             //Must add a player and their shadow with matching string tags. 
-            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, -5, 0),.5f, "playerone"); 
+<<<<<<< .mine            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, 0, 0), .5f, "playerone");
+
+=======            PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, -5, 0),.5f, "playerone"); 
             
-            playerModels.Add(player1);
-            //shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
+>>>>>>> .theirs            playerModels.Add(player1);
+<<<<<<< .mine            //shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
+
+=======            //shadowModels.Add(new ShadowModel(Game.Content.Load<Model>(@"shadow"), player1, 3.184f / 2));
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -15, 0), .5f));
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
@@ -185,10 +196,10 @@ namespace Doodle_Duel2
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 0, 0), .5f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 20, 0), .1f));
             
-            base.LoadContent();
+>>>>>>> .theirs            base.LoadContent();
         }
 
-        private bool heightChanged()
+        /*private bool heightChanged()
         {
             float newMaxHeightThusFar = float.MinValue;
 
@@ -210,9 +221,10 @@ namespace Doodle_Duel2
             }
 
             return false;
-        }
+        } */
 
-        private float getMaxPlatformHeight()
+<<<<<<< .mine        private void isOnPlatform()
+=======        private float getMaxPlatformHeight()
         {
             float height = float.MinValue;
             foreach (PlatformModel platform in platformModels)
@@ -224,13 +236,30 @@ namespace Doodle_Duel2
         }
 
         private bool isOnPlatform(PlayerModel player, PlatformModel platform)
-        {
-            if (player.currJumpState == PlayerModel.JumpState.DOWN  &&
-                (Math.Abs(player.modelPosition.Y - platform.modelPosition.Y) < 1))
-                return true;
+>>>>>>> .theirs        {
+            foreach (var component in platformModels)
+            {
+                PlatformModel pm = component as PlatformModel;
+                //Check x
+                if (pm != null)
+                {
+                    if ((pm.modelPosition.X - pm.Scale * 20) < playerModels[0].Position.X && playerModels[0].Position.X < (pm.modelPosition.X + pm.Scale * 20))
+                    {
+                       if (Math.Abs(Math.Abs(pm.modelPosition.Y) - Math.Abs(playerModels[0].cPosition.Y)) < 1)
+                          {
+                            if ((pm.modelPosition.Z - pm.Scale * 20) < playerModels[0].Position.Z && playerModels[0].Position.Z < (pm.modelPosition.Z + pm.Scale * 20))
+                            {
+                                if (playerModels[0].cVelocity < 0)
+                                {
+                                    playerModels[0].iHeight = pm.modelPosition.Y;
+                                    playerModels[0].jTime = 0;
+                                }
+                            }
+                         }
+                    }
+                }
 
-            return false;
+            }
         }
-
     }
 }

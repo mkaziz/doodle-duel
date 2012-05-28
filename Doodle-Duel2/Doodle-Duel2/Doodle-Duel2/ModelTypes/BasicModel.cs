@@ -15,7 +15,7 @@ namespace Doodle_Duel2
     public class BasicModel
     {
 
-        public Model model { get; protected set; }
+        public Model model { get; set; }
         public Vector3 modelPosition;
         public BoundingSphere boundingSphere;
 
@@ -24,6 +24,11 @@ namespace Doodle_Duel2
         protected float initialHeight;
         protected float modelScale;
         
+
+        public float Scale 
+        {
+            get { return modelScale; }
+        }
 
         public BasicModel(Model m, float rotation, Vector3 position, float scale)
         {

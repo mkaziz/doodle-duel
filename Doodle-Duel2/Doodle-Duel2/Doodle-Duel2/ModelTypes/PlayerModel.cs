@@ -12,73 +12,91 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    public class PlayerModel : BasicModel
+    public class PlayerModel
     {
+
+        public Model model { get; protected set; }
+        protected Matrix world = Matrix.Identity;
+
+        //Initial vars
+        private float modelRotation;
+        private Vector3 modelPosition;
+        private float modelScale;
         private string tag;
-        public JumpState currJumpState;
-        public enum JumpState { UP, DOWN };
 
-        public Vector3 Position 
+        public Vector3 Position
         {
-
-            get { return new Vector3(modelPosition.X,initialHeight-2, modelPosition.Z); }
+            get { return new Vector3(modelPosition.X, initialHeight - 2, modelPosition.Z); }
+            set { modelPosition = value; }
         }
 
-        public float CurrentHeight 
+        public Vector3 cPosition
+        {
+            get { return modelPosition; }
+            set { modelPosition = value; }
+        } 
+
+        public float CurrentHeight
         {
             get { return modelPosition.Y; }
         }
 
-        // override from BasicModel, make public
+<<<<<<< .mine        public float iHeight
+        {
+            get { return initialHeight; }
+            set { initialHeight = value; }
+        }
+=======        // override from BasicModel, make public
         public new float initialHeight;
-
+>>>>>>> .theirs
+        public float jTime
+        {
+            get { return jumpTime; }
+            set { jumpTime = value; }
+        }
+        
+        public float cVelocity
+        {
+            get { return currentVelocity; }
+            set { currentVelocity = value; }
+        }
         //Vars for smooth jumping
+        private float initialHeight;
         private float jumpTime = 0;
-        private float initialVelocity = 20f;
-        private float currVelocity = 20f;
-        private float gravity = 10f; //Can change around to make jumping faster/slower
-        public float maxHeightThusFar = float.MinValue; 
+        private float velocity = 20f;//Change around to make jumping higher/lower
+        private float gravity = 4.5f; //Can change around to make jumping faster/slower
+        private float currentVelocity;
 
-        public void setNewPlatform() {
-            initialHeight = modelPosition.Y;
-            jumpTime = 0f;
-            currVelocity = initialVelocity;
+        public PlayerModel(Model m, float rotation, Vector3 position, float scale)
+        {
+            model = m;
+            modelRotation = rotation;
+            modelPosition = position;
+            initialHeight = position.Y;
+            modelScale = scale;
         }
 
-        public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t) : base(m, rotation, position, scale)
+        public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t)
         {
+            model = m;
             tag = t;
-            currJumpState = JumpState.UP;
+            modelRotation = rotation;
+            modelPosition = position;
+            initialHeight = position.Y;
+            modelScale = scale;
         }
 
-        public override void Update()
+        public virtual void Update()
         {
-            // calculate velocity via v = u + at;
-            currVelocity = initialVelocity - gravity * jumpTime;
-
-            // if velocity is negative (ie character is going downwards) set jumpstate to down
-            if (currVelocity <= 0)
-                currJumpState = JumpState.DOWN;
-            else
-                currJumpState = JumpState.UP;
-
-            //that is acceleration downward due to gravity, initial velocity, and the initial position
-            float timeSquared = (float)Math.Pow(jumpTime, 2);
-            float distFromPlatform =  initialVelocity * jumpTime - gravity * timeSquared/2;
-
-            modelPosition = new Vector3(modelPosition.X, distFromPlatform + initialHeight, modelPosition.Z);
-
-            if (distFromPlatform + initialHeight > maxHeightThusFar)
-                maxHeightThusFar = distFromPlatform + initialHeight;
-
-            if (modelPosition.Y <= initialHeight)
-            {
-                jumpTime = 0f;
-                currVelocity = initialVelocity;
-            }
-
-            jumpTime += .05f;
-
+            //find velocity via x = gt + Vo
+            currentVelocity = -2*gravity * jumpTime + velocity;
+                //utilizes y = .5at^2 + Vot + yo
+                //that is acceleration downward due to gravity, initial velocity, and the initial position
+                float timeSquared = (float)Math.Pow(jumpTime, 2);
+                float initialVelocity = velocity * jumpTime;
+                float gravityLoss = gravity * timeSquared;
+                modelPosition = new Vector3(modelPosition.X, initialVelocity - gravityLoss + initialHeight, modelPosition.Z);
+                jumpTime += .05f;
 
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 modelPosition += new Vector3(-.5f, 0, 0);
@@ -89,13 +107,36 @@ namespace Doodle_Duel2
             else if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 modelPosition += new Vector3(0, 0, -.5f);
 
-            base.Update();
-
         }
 
-        public override void Draw(Camera camera)
+        public virtual Matrix getWorld()
         {
-            base.Draw(camera);
+            return world;
         }
+
+        public void Draw(Camera camera)
+        {
+            Matrix[] transforms = new Matrix[model.Bones.Count];
+            model.CopyAbsoluteBoneTransformsTo(transforms);
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect be in mesh.Effects)
+                {
+                    be.EnableDefaultLighting();
+                    be.Projection = camera.projection;
+                    be.View = camera.view;
+                    be.World = getWorld() * mesh.ParentBone.Transform;
+                    be.World = transforms[mesh.ParentBone.Index] * Matrix.CreateRotationY(modelRotation) * Matrix.CreateScale(modelScale) * Matrix.CreateTranslation(modelPosition);
+                }
+
+                mesh.Draw();
+            }
+
+
+        }
+
+
+
     }
 }
