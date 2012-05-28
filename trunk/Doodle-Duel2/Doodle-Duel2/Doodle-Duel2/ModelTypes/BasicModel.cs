@@ -17,12 +17,13 @@ namespace Doodle_Duel2
 
         public Model model { get; protected set; }
         public Vector3 modelPosition;
-        
+        public BoundingSphere boundingSphere;
+
         protected Matrix world = Matrix.Identity;
         protected float modelRotation;
         protected float initialHeight;
         protected float modelScale;
-        protected BoundingBox boundingBox;
+        
 
         public BasicModel(Model m, float rotation, Vector3 position, float scale)
         {
@@ -30,11 +31,13 @@ namespace Doodle_Duel2
             modelRotation = rotation;
             modelPosition = position;
             initialHeight = position.Y;
-            modelScale = scale; 
+            modelScale = scale;
+            boundingSphere = createBoundingSphere();
         }
 
         public virtual void Update()
         {
+            //boundingSphere = BoundingSphere.CreateFromPoints();
 
         }
 
@@ -66,6 +69,32 @@ namespace Doodle_Duel2
 
 
         }
+
+        private BoundingSphere createBoundingSphere()
+        {
+            boundingSphere = new BoundingSphere();
+
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                if (boundingSphere.Radius == 0)
+                    boundingSphere = mesh.BoundingSphere;
+                else
+                    boundingSphere = BoundingSphere.CreateMerged(boundingSphere, mesh.BoundingSphere);
+            }
+
+            boundingSphere.Center = modelPosition;
+
+            boundingSphere.Radius *= modelScale;
+
+            return boundingSphere;
+        }
+
+        public BoundingSphere getBoundingSphere()
+        {
+            boundingSphere.Center = modelPosition;
+            return boundingSphere;
+        }
+
 
     }
 }

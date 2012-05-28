@@ -30,7 +30,7 @@ namespace Doodle_Duel2
         }
 
         // override from BasicModel, make public
-        public float initialHeight;
+        public new float initialHeight;
 
         //Vars for smooth jumping
         private float jumpTime = 0;
