@@ -18,7 +18,7 @@ namespace Doodle_Duel2
         Texture2D texture;
         Vector2 position, screenSize;
         public bool moveBackground = false;
-
+        
         public Background(Game g)
         {
             screenSize = new Vector2(g.GraphicsDevice.Viewport.Width, g.GraphicsDevice.Viewport.Height);
@@ -27,7 +27,6 @@ namespace Doodle_Duel2
             position.Y = screenSize.Y - texture.Height;
             
         }
-
 
         public void Update(GameTime gameTime)
         {
