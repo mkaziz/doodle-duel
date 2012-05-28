@@ -27,9 +27,7 @@ namespace Doodle_Duel2
 
         ContentManager content;
         Texture2D backgroundTexture;
-        SpriteBatch sb;
-        Score score;
-
+        
         #endregion
 
         #region Initialization
@@ -54,12 +52,6 @@ namespace Doodle_Duel2
                 content = new ContentManager(ScreenManager.Game.Services, "Content");
 
             backgroundTexture = content.Load<Texture2D>("background");
-
-            score = new Score();
-            score.Font = content.Load<SpriteFont>("Arial");
-            score.scoreVal = 0;
-
-            sb = ScreenManager.SpriteBatch;
 
         }
 
@@ -102,8 +94,6 @@ namespace Doodle_Duel2
             Rectangle fullscreen = new Rectangle(0, 0, viewport.Width, viewport.Height);
 
             spriteBatch.Begin();
-
-            score.Draw(ScreenManager.SpriteBatch);
 
             spriteBatch.Draw(backgroundTexture, fullscreen,
                              new Color(TransitionAlpha, TransitionAlpha, TransitionAlpha));
