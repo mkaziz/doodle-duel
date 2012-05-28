@@ -89,27 +89,16 @@ namespace Doodle_Duel2
             foreach (PlatformModel model in platformModels)
             {
 
-                if (model.modelPosition.Y < -35)
+                if (model.modelPosition.Y < -45)
                 {
+                    float yRange = 5f;
                     float xRange = 50f;
-                    model.modelPosition.Y = 20;
+                    model.modelPosition.Y = 15f + (float)random.NextDouble() * yRange - yRange / 2;
                     model.modelPosition.X = (float)random.NextDouble() * xRange - xRange / 2;
                 }
                 model.Update();
             }
-            
-            
-            /*
-            //if maxHeightThusFar has changed, the background should be scrolling
-            if (heightChanged())
-            {
-                moveBackground = true;
-                scrollObjects();
-            }
-            else
-                moveBackground = false; 
-            */
-
+          
             base.Update(gameTime);
         }
 
@@ -119,7 +108,6 @@ namespace Doodle_Duel2
             foreach (PlayerModel model in playerModels)
             {
                 model.Position -= new Vector3(0,scrollAmount,0);
-                model.maxHeightThusFar -= scrollAmount;
                 model.iHeight -= scrollAmount;
             }
 
@@ -167,9 +155,7 @@ namespace Doodle_Duel2
 
         protected override void LoadContent()
         {
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -5, 0), .5f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 10, 0), .5f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
+
             //Must add a player and their shadow with matching string tags. 
             PlayerModel player1 = new PlayerModel(Game.Content.Load<Model>(@character), 3.184f / 2, new Vector3(0, -5, 0), .5f, "playerone");
 
@@ -180,28 +166,14 @@ namespace Doodle_Duel2
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 15, 0), .5f));
             //platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 32, 0), .1f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, -20, 0), .3f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 0, 0), .5f));
-            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3(0, 20, 0), .1f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50/ 2, 0, 0), .5f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 20, 0), .3f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, -5, 0), .4f));
+            platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 45, 0), .6f));
+            
 
             base.LoadContent();
         }
-
-        private bool heightChanged()
-        {
-            bool returnval = false;
-            // find the maximum Y-point of all players in the game
-            foreach (PlayerModel m in playerModels)
-            { 
-                if (m.maxHeightThusFar > maxHeightThusFar)
-                {
-                    maxHeightThusFar = m.maxHeightThusFar;
-                    returnval = true;
-                }
-            }
-
-            return returnval;
-        } 
-
 
         private bool isOnPlatform()
         {
