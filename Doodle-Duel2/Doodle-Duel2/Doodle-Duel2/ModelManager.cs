@@ -26,7 +26,7 @@ namespace Doodle_Duel2
         private bool hidden;
         private Camera camera;
         private Random random;
-
+        public bool gameOver; 
         // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
         // the background should scroll
         private float maxHeightThusFar = 0;
@@ -69,7 +69,7 @@ namespace Doodle_Duel2
             foreach (PlayerModel model in playerModels)
             {
                 isOnPlatform();
-
+                playerLost(model);
                 if (model.iHeight > -20f)
                 {
                     scrollObjects();
@@ -202,6 +202,13 @@ namespace Doodle_Duel2
                    }
             }
             return false;
+        }
+
+        
+        public void playerLost(PlayerModel player)
+        {
+            if (player.cPosition.Y < -(Game.GraphicsDevice.Viewport.Height/2))
+                gameOver = true; 
         }
     }
 }
