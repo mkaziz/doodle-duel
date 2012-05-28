@@ -79,6 +79,7 @@
     <Compile Include="ModelTypes\PlatformModel.cs" />
     <Compile Include="ModelTypes\PlayerModel.cs" />
     <Compile Include="ModelTypes\ShadowModel.cs" />
+    <Compile Include="ModelTypes\TrampolineModel.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="ScreenManager\GameScreen.cs" />
     <Compile Include="ScreenManager\InputState.cs" />
