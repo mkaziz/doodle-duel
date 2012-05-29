@@ -54,7 +54,7 @@ namespace Doodle_Duel2
         //Vars for smooth jumping
         private float initialHeight;
         private float jumpTime = 0;
-        private float velocity = 22.5f; //Change around to make jumping higher/lower
+        private float velocity = 20f; //Change around to make jumping higher/lower
         private float gravity = 4.5f; //Can change around to make jumping faster/slower
         private float currentVelocity;
 
