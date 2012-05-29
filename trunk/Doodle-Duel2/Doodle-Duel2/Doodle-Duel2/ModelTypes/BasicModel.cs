@@ -17,8 +17,8 @@ namespace Doodle_Duel2
 
         public Model model { get; set; }
         public Vector3 modelPosition;
-        public BoundingSphere boundingSphere;
 
+        protected BoundingSphere boundingSphere;
         protected Matrix world = Matrix.Identity;
         protected float modelRotation;
         protected float initialHeight;
@@ -90,6 +90,7 @@ namespace Doodle_Duel2
             boundingSphere.Center = modelPosition;
 
             boundingSphere.Radius *= modelScale;
+            boundingSphere.Radius -= 1f;
 
             return boundingSphere;
         }

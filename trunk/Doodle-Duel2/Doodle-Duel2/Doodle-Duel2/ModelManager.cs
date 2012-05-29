@@ -85,7 +85,9 @@ namespace Doodle_Duel2
 
                 foreach (EnemyModel enemy in enemyModels)
                 {
-                    //if (enemy.boundingSphere.Intersects()
+                    if (enemy.getBoundingSphere().Intersects(model.getBoundingSphere())) {
+                        gameOver = true;
+                    }
                 }
                 model.Update();
             }
@@ -211,7 +213,7 @@ namespace Doodle_Duel2
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, -5, 0), .4f));
             double placeholder = random.NextDouble();
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)placeholder * 50 - 50 / 2, 45, 0), .6f));
-            enemyModels.Add(new EnemyModel(Game.Content.Load<Model>(@"monkey"), 0, new Vector3((float)placeholder * 50 - 50 / 2, 2, 0), .5f));
+            enemyModels.Add(new EnemyModel(Game.Content.Load<Model>(@"monkey"), 0, new Vector3(20, 2, 0), .5f));
 
             trampolineModels.Add(new TrampolineModel(Game.Content.Load<Model>(@"trampoline"), 3.184f / 2, new Vector3((float)placeholder * 50 - 50 / 2, 45, 0), .05f)); 
 
