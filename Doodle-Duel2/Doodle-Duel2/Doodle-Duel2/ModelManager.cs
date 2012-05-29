@@ -22,15 +22,12 @@ namespace Doodle_Duel2
         List<ShadowModel> shadowModels = new List<ShadowModel>();
         List<PlatformModel> platformModels = new List<PlatformModel>();
         List<TrampolineModel> trampolineModels = new List<TrampolineModel>();
+        List<EnemyModel> enemyModels = new List<EnemyModel>();
 
         private String character;
         private bool hidden;
-        private Camera camera;
         private Random random;
         public bool gameOver; 
-        // This is the maximum height achieved by any player. When the maxHeightThusFar is exceeded,
-        // the background should scroll
-        private float maxHeightThusFar = 0;
 
         // Set to true when the background is currently scrolling
         public bool moveBackground;
@@ -47,7 +44,6 @@ namespace Doodle_Duel2
         {
             hidden = false;
             character = c;
-            camera = ((Game1)game).camera;
             random = new Random();
             // TODO: Construct any child components here
         }
@@ -85,7 +81,12 @@ namespace Doodle_Duel2
                     moveBackground = false;
                 //check if we are getting a boostup. Boostup code is non-location specific
                 if (isOnTrampoline())
-                    trampolineModels[0].boostUp(model); 
+                    trampolineModels[0].boostUp(model);
+
+                foreach (EnemyModel enemy in enemyModels)
+                {
+                    //if (enemy.boundingSphere.Intersects()
+                }
                 model.Update();
             }
 
@@ -110,6 +111,17 @@ namespace Doodle_Duel2
                 }
                 model.Update();
             }
+
+            foreach (EnemyModel model in enemyModels)
+            {
+                if (model.modelPosition.Y < -45)
+                {
+                    float yRange = 10f;
+                    model.modelPosition.Y = getMaxPlatformHeight() + 15f + (float)random.NextDouble() * yRange;
+                    
+                }
+                model.Update();
+            }
           
             base.Update(gameTime);
         }
@@ -130,9 +142,13 @@ namespace Doodle_Duel2
 
             foreach (PlatformModel model in platformModels)
             {
-                model.modelPosition.Y -= scrollAmount;    
+                model.modelPosition.Y -= scrollAmount;
             }
             foreach (TrampolineModel model in trampolineModels)
+            {
+                model.modelPosition.Y -= scrollAmount;
+            }
+            foreach (EnemyModel model in enemyModels)
             {
                 model.modelPosition.Y -= scrollAmount;
             }
@@ -167,6 +183,10 @@ namespace Doodle_Duel2
                 {
                     model.Draw(((Game1)Game).camera);
                 }
+                foreach (EnemyModel model in enemyModels)
+                {
+                    model.Draw(((Game1)Game).camera);
+                }
             }
 
             base.Draw(gameTime);
@@ -189,8 +209,9 @@ namespace Doodle_Duel2
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 20, 0), .3f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, 35, 0), .3f));
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)random.NextDouble() * 50 - 50 / 2, -5, 0), .4f));
-            double placeholder = random.NextDouble(); 
+            double placeholder = random.NextDouble();
             platformModels.Add(new PlatformModel(Game.Content.Load<Model>(@"platform"), 3.184f / 2, new Vector3((float)placeholder * 50 - 50 / 2, 45, 0), .6f));
+            enemyModels.Add(new EnemyModel(Game.Content.Load<Model>(@"monkey"), 0, new Vector3((float)placeholder * 50 - 50 / 2, 2, 0), .5f));
 
             trampolineModels.Add(new TrampolineModel(Game.Content.Load<Model>(@"trampoline"), 3.184f / 2, new Vector3((float)placeholder * 50 - 50 / 2, 45, 0), .05f)); 
 

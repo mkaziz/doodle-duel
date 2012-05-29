@@ -12,16 +12,9 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    public class PlayerModel
+    public class PlayerModel : BasicModel
     {
 
-        public Model model { get; protected set; }
-        protected Matrix world = Matrix.Identity;
-
-        //Initial vars
-        private float modelRotation;
-        private Vector3 modelPosition;
-        private float modelScale;
         private string tag;
 
         public Vector3 Position
@@ -71,7 +64,7 @@ namespace Doodle_Duel2
             set { velocity = value; }
         }
 
-        public PlayerModel(Model m, float rotation, Vector3 position, float scale)
+        public PlayerModel(Model m, float rotation, Vector3 position, float scale) : base(m,rotation,position,scale)
         {
             model = m;
             modelRotation = rotation;
@@ -80,7 +73,7 @@ namespace Doodle_Duel2
             modelScale = scale;
         }
 
-        public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t)
+        public PlayerModel(Model m, float rotation, Vector3 position, float scale, string t)   : base(m, rotation, position, scale)
         {
             model = m;
             tag = t;
