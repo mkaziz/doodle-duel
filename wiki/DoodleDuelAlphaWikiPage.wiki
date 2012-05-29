@@ -3,6 +3,7 @@ Doodle Duel - While the duel phase of the game has not been implemented, the pla
 
 
 
+
 -You can change your character after pressing the initial "Play Game" and going to "Change Character". Choose between a chicken, cow and dog.
 
 -Pause the game at any time by hitting "Escape", and then navigate to either "Resume" or "Exit".
@@ -22,4 +23,5 @@ Doodle Duel - While the duel phase of the game has not been implemented, the pla
 Enjoy the game!! :)
 
 Cheers,
+
 Khalid, Cassie, and Dhruv
