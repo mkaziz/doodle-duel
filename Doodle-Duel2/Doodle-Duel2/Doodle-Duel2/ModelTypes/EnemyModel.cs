@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Doodle_Duel2
 {
-    class EnemyModel : BasicModel
+    public class EnemyModel : BasicModel
     {
         enum Facing {LEFT, RIGHT};
         Facing currentlyFacing;
