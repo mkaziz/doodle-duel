@@ -116,6 +116,9 @@ namespace Doodle_Duel2
                 oldkeyboard = Keyboard.GetState();
                 
             List<BasicModel> needtoremove = new List<BasicModel>();
+
+            if (velocity > 20f)
+                modelRotation += .1f; 
                
             if (manager.models.Count > 0)
                 {
