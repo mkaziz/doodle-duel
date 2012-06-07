@@ -33,6 +33,7 @@ namespace Doodle_Duel2
         PlayerModel playerOne;
         String[] charactersAvailable = { "chicken", "cow","monkey" };
         int characterDecided = 0;
+        Texture2D background; 
 
         #region Initialization
 
@@ -166,6 +167,7 @@ namespace Doodle_Duel2
         {
             //Must add a player and their shadow with matching string tags. 
             playerOne = new PlayerModel(game.Content.Load<Model>(@charactersAvailable[characterDecided]), 3.184f / 2, new Vector3(0, 0, 0), .5f);
+            background = game.Content.Load<Texture2D>(@"blank");
             base.LoadContent();
         }
 

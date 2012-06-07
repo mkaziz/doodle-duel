@@ -62,7 +62,7 @@ namespace Doodle_Duel2
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
             MenuEntries.Add(exitMenuEntry);
-            game = g; 
+            game = g;
         }
 
 
