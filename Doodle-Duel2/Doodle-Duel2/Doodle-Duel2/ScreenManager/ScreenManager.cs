@@ -37,6 +37,7 @@ namespace Doodle_Duel2
         SpriteBatch spriteBatch;
         SpriteFont font;
         Texture2D blankTexture;
+        Texture2D background; 
 
         bool isInitialized;
 
@@ -118,6 +119,7 @@ namespace Doodle_Duel2
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = content.Load<SpriteFont>("menufont");
             blankTexture = content.Load<Texture2D>("blank");
+            background = content.Load<Texture2D>(@"background");
 
             // Tell each of the screens to load their content.
             foreach (GameScreen screen in screens)

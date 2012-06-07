@@ -118,7 +118,7 @@ namespace Doodle_Duel2
             List<BasicModel> needtoremove = new List<BasicModel>();
 
             if (velocity > 20f)
-                modelRotation += .1f; 
+                modelRotation += .1f;  
                
             if (manager.models.Count > 0)
                 {
@@ -162,7 +162,7 @@ namespace Doodle_Duel2
         {
             Matrix[] transforms = new Matrix[model.Bones.Count];
             model.CopyAbsoluteBoneTransformsTo(transforms);
-
+            
             foreach (ModelMesh mesh in model.Meshes)
             {
                 foreach (BasicEffect be in mesh.Effects)
