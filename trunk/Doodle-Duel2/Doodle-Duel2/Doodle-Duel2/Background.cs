@@ -18,6 +18,7 @@ namespace Doodle_Duel2
         Texture2D texture;
         Vector2 position, screenSize;
         public bool moveBackground = false;
+        Game game; 
         
         public Background(Game g)
         {
@@ -25,7 +26,7 @@ namespace Doodle_Duel2
             texture = g.Content.Load<Texture2D>("background");
             position = Vector2.Zero;
             position.Y = screenSize.Y - texture.Height;
-            
+            game = g; 
         }
 
         public void Update(GameTime gameTime)
@@ -45,7 +46,10 @@ namespace Doodle_Duel2
 
             sd.Begin();
                 sd.Draw(texture, position, Color.White);
-            
+          Rectangle screenRectangle = new Rectangle(0, 0, game.
+              GraphicsDevice.PresentationParameters.BackBufferWidth,
+            game.GraphicsDevice.PresentationParameters.BackBufferHeight);
+                sd.Draw(texture, screenRectangle, Color.White);
 
             if (position.Y >= 0 & position.Y <= screenSize.Y)
                 sd.Draw(
