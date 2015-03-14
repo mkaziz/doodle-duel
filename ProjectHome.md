@@ -1,0 +1,1 @@
+This game can be played in one or two player mode. Set-up to work with the Xbox, players either try to achieve a high score or duel against each other for last doodle standing.
